@@ -5,7 +5,7 @@
  */
 
 // get block however you want.
-let blocks = document.querySelectorAll(".the-code");
+let blocks = document.querySelectorAll(".code-to-format");
 
 for (const block of blocks) {
     // remove leading and trailing white space.
