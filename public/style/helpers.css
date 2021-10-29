@@ -1,0 +1,23 @@
+.horizontal-start {
+    justify-content: start;
+}
+
+.horizontal-center {
+    justify-content: center;
+}
+
+.horizontal-end {
+    justify-content: end;
+}
+
+.vertical-start {
+    align-items: start;
+}
+
+.vertical-center {
+    align-items: center;
+}
+
+.vertical-end {
+    align-items: end;
+}
