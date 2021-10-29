@@ -36,12 +36,7 @@
             <div class="doc-code">
                 <pre>
                     <code id="the-code" class="language-javascript">
-                        addEventListener('load', () => {
-                            const code = document.querySelector('#code');
-                            const worker = new Worker('worker.js');
-                            worker.onmessage = (event) => { code.innerHTML = event.data; }
-                            worker.postMessage(code.textContent);
-                        });
+                        // Code block
                     </code>
                 </pre>
             </div>
