@@ -1,12 +1,11 @@
 .content-container {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 5rem 20rem 5rem 20rem;
 }
 
 .doc-code {
     font-size: 1rem;
-    padding-left: -10rem;
-    margin-left: 0;
+    min-width: 50rem;
 }
