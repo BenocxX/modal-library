@@ -1,0 +1,12 @@
+.footer-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+}
+
+.footer-info {
+    color: rgb(73, 73, 73);
+}

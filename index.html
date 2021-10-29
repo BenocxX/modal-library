@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/atom-one-light.min.css">
+    <link rel="stylesheet" href="public/style/style.css">
+    <link rel="stylesheet" href="public/style/navbar.css">
+    <link rel="stylesheet" href="public/style/content.css">
+    <link rel="stylesheet" href="public/style/footer.css">
+    <script type="module" src="public/script/codeBlockIndentationHandler.js"></script>
+    <title>Library</title>
+</head>
+<body>
+    <div class="navbar-container">
+        <div class="navbar-tab tab-active">
+            <a href="#">Documentation</a>
+            <div class="slider"></div>
+        </div>
+        <div class="navbar-tab">
+            <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/" target="_blank">Bootstrap</a>
+            <div class="slider"></div>
+        </div>
+        <div class="navbar-tab">
+            <a href="https://micromodal.vercel.app/" target="_blank">Micromodal</a>
+            <div class="slider"></div>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="doc-container">
+            <h1 class="doc-title">Title</h1>
+            <p class="doc-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore in sed enim? Dolores similique assumenda et enim illum nam suscipit. Magni, distinctio! Blanditiis mollitia optio atque dignissimos, vitae adipisci nihil!</p>
+            <div class="doc-code">
+                <pre>
+                    <code id="the-code" class="language-javascript">
+                        addEventListener('load', () => {
+                            const code = document.querySelector('#code');
+                            const worker = new Worker('worker.js');
+                            worker.onmessage = (event) => { code.innerHTML = event.data; }
+                            worker.postMessage(code.textContent);
+                        });
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </div>
+    <div class="footer-container">
+        <div class="footer-info">© 2021 Copyright: Mathis Côté</div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
