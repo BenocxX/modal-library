@@ -33,12 +33,26 @@
             <p class="doc-description">
                 Description
             </p>
-            <div class="doc-code">
-                <pre>
-                    <code id="the-code" class="language-javascript">
-                        // Code block
-                    </code>
-                </pre>
+            <div class="doc-info-container">
+                <div class="doc-example">
+                    test 123
+                </div>
+                <div class="doc-code">
+                    <pre><code id="the-code" class="language-javascript">
+                            let code = block.innerHTML
+                                    .split('\n')
+                                    .filter(l => l.trim().length > 0)
+                                    .join('\n');
+                            let code = block.innerHTML
+                                        .split('\n')
+                                        .filter(l => l.trim().length > 0)
+                                        .join('\n');
+                            let code = block.innerHTML
+                                        .split('\n')
+                                        .filter(l => l.trim().length > 0)
+                                        .join('\n');
+                    </code></pre>
+                </div>
             </div>
         </div>
     </div>
