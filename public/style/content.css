@@ -2,16 +2,24 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 5rem 20rem 5rem 20rem;
+}
+
+.doc-container {
+    box-sizing: border-box;
+    width: 60%;
+}
+
+.doc-element {
+    margin: 5rem 0 5rem 0;
 }
 
 .doc-info-container {
     align-items: center;
-    display: flex;
-    flex-direction: column;
     border: 1px solid rgb(210, 210, 210);
     border-radius: 0.5rem;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .doc-example {
@@ -50,7 +58,8 @@
 .doc-code {
     margin: -1rem 0 -1rem 0;
     font-size: 1rem;
-    width: 50rem;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .doc-code pre code {
