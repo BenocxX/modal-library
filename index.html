@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="public/style/content.css">
     <link rel="stylesheet" href="public/style/footer.css">
     <script type="module" src="public/script/indentationHandler.js"></script>
-    <script type="module" src="public/script/modal.js"></script>
     <script type="module" src="public/script/app.js"></script>
     <title>Library</title>
 </head>
@@ -36,27 +35,103 @@
 
         <div class="doc-container">
             <div class="doc-element">
-                <h1 class="doc-title">Title</h1>
+                <h1 class="doc-title">Creating a basic modal</h1>
                 <p class="doc-description">
                     Description
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
-                        <button class="doc-example-button" data-modal-launcher data-modal-id="exampleModal">
-                            Template button
+                        <button class="doc-example-button" data-modal-launcher
+                                data-modal-id="exampleModal1">
+                            Button
+                        </button>
+                    </div>
+                    <div class="doc-code">
+                        <pre><code class="language-html code-to-format">
+                            &lt;!-- HTML --&gt;
+                            &lt;button class="myButton" data-modal-launcher
+                                        data-modal-id="myModal"&gt;
+                                Button
+                            &lt;/button&gt;
+                            <!-- Line break in code block -->
+                            &lt;div class="modal" id="myModal"&gt;
+                                &lt;div class="modal-dialog"&gt;
+                                    &lt;h3&gt;Title&lt;/h3&gt;
+                                    &lt;p&gt;Text&lt;/p&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            <!-- Line break in code block -->
+                            &lt;div class="modal-shadow"&gt;&lt;/div&gt;
+                        </code></pre>
+
+                        <pre><code class="language-javascript code-to-format">
+                            // JavaScript
+                            const myButton = document.querySelector("[data-modal-launcher]")
+                            myButton.addEventListener("click", onModalLaunch)
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="doc-element">
+                <h1 class="doc-title">Customizing elements in the modal</h1>
+                <p class="doc-description">
+                    Description
+                </p>
+                <div class="doc-info-container">
+                    <div class="doc-example horizontal-center vertical-center">
+                        <button class="doc-example-button" data-modal-launcher
+                                data-modal-id="exampleModal2">
+                            Button
                         </button>
                     </div>
                     <div class="doc-code">
                         <pre><code class="language-javascript code-to-format">
-                            // Template code
-                            .doc-info-container {
-                                align-items: center;
-                                border: 1px solid rgb(210, 210, 210);
-                                border-radius: 0.5rem;
-                                box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
-                                display: flex;
-                                flex-direction: column;
-                            }
+                            // JavaScript
+                            const modal = document.querySelector("#myModal")
+                            modal.addEventListener("modal.shown", function (e) {
+                                const dialog = this.querySelector(".modal-dialog")
+                                const dialogTitle = dialog.querySelector("h3")
+                                const dialogText = dialog.querySelector("p")
+                                <!-- Line break in code block -->
+                                dialogTitle.innerText = "My custom title"
+                                dialogText.innerText = "My custom text"
+                            })
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="doc-element">
+                <h1 class="doc-title">Passing info through modal</h1>
+                <p class="doc-description">
+                    Description
+                </p>
+                <div class="doc-info-container">
+                    <div class="doc-example horizontal-center vertical-center">
+                        <button id="buttonExample3" class="doc-example-button" data-modal-launcher
+                                data-modal-id="exampleModal3">
+                            Button
+                        </button>
+                    </div>
+                    <div class="doc-code">
+                        <pre><code class="language-javascript code-to-format">
+                            // JavaScript
+                            const myButton = document.querySelector("#myButton")
+                                .addEventListener("click", (e) => {
+                                    onModalLaunch(e, {
+                                        title: "Where am I from?",
+                                        text: "I am text coming from the \"detail\" parameter!"
+                                    })
+                                })
+                            <!-- Line break in code block -->
+                            const modal = document.querySelector("#myModal")
+                            modal.addEventListener("modal.shown", function (e) {
+                                const dialog = this.querySelector(".modal-dialog")
+                                const dialogTitle = dialog.querySelector("h3")
+                                const dialogText = dialog.querySelector("p")
+                                <!-- Line break in code block -->
+                                dialogTitle.innerText = e.detail.title
+                                dialogText.innerText = e.detail.text
+                            })
                         </code></pre>
                     </div>
                 </div>
@@ -64,16 +139,28 @@
         </div>
     </div>
 
-    <div class="modal" id="exampleModal">
+    <div class="modal" id="exampleModal1">
         <div class="modal-dialog">
             <h3>Title</h3>
-            <p>test</p>
+            <p>Text</p>
         </div>
     </div>
 
-    <div class="modal-shadow">
-
+    <div class="modal" id="exampleModal2">
+        <div class="modal-dialog">
+            <h3>Title</h3>
+            <p>Text</p>
+        </div>
     </div>
+
+    <div class="modal" id="exampleModal3">
+        <div class="modal-dialog">
+            <h3>Title</h3>
+            <p>Text</p>
+        </div>
+    </div>
+
+    <div class="modal-shadow"></div>
 
     <div class="footer-container">
         <div class="footer-info">© 2021 Copyright: Mathis Côté</div>
