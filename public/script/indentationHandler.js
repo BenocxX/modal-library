@@ -1,6 +1,7 @@
 /**
- * When using Highlight.js, code block indention is broke because of html
- * indention in the code file. To fix this, I used this solution:
+ * When using Highlight.js, code block indention are broken because of html
+ * indention in the code file. The <pre> tag uses the file indentation and
+ * displays it on the website. To fix this, I used this solution:
  * https://stackoverflow.com/a/61896157
  */
 
