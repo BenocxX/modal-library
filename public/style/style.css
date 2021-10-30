@@ -5,6 +5,6 @@ html, body {
     padding: 0;
 }
 
-*:not(.doc-code pre code) {
+* {
     font-family: Montserrat, sans-serif;
 }
