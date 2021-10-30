@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="public/style/content.css">
     <link rel="stylesheet" href="public/style/footer.css">
     <script type="module" src="public/script/indentationHandler.js"></script>
+    <script type="module" src="public/script/modal.js"></script>
+    <script type="module" src="public/script/app.js"></script>
     <title>Library</title>
 </head>
 <body>
@@ -40,7 +42,7 @@
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
-                        <button data-modal="exampleModal" class="doc-example-button">
+                        <button class="doc-example-button" data-modal-launcher data-modal-id="exampleModal">
                             Template button
                         </button>
                     </div>
