@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/atom-one-light.min.css">
     <link rel="stylesheet" href="public/style/helpers.css">
+    <link rel="stylesheet" href="public/style/modals.css">
     <link rel="stylesheet" href="public/style/style.css">
     <link rel="stylesheet" href="public/style/navbar.css">
     <link rel="stylesheet" href="public/style/content.css">
     <link rel="stylesheet" href="public/style/footer.css">
-    <script type="module" src="public/script/codeBlockIndentationHandler.js"></script>
+    <script type="module" src="public/script/indentationHandler.js"></script>
     <title>Library</title>
 </head>
 <body>
@@ -29,6 +30,8 @@
     </div>
 
     <div class="content-container">
+        <!-- Add side navigation bar -->
+
         <div class="doc-container">
             <div class="doc-element">
                 <h1 class="doc-title">Title</h1>
@@ -37,88 +40,7 @@
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
-                        <button class="doc-example-button">
-                            Template button
-                        </button>
-                    </div>
-                    <div class="doc-code">
-                        <pre><code class="language-javascript code-to-format">
-                            // Template code
-                            .doc-info-container {
-                                align-items: center;
-                                border: 1px solid rgb(210, 210, 210);
-                                border-radius: 0.5rem;
-                                box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
-                                display: flex;
-                                flex-direction: column;
-                            }
-                        </code></pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doc-element">
-                <h1 class="doc-title">Title</h1>
-                <p class="doc-description">
-                    Description
-                </p>
-                <div class="doc-info-container">
-                    <div class="doc-example horizontal-center vertical-center">
-                        <button class="doc-example-button">
-                            Template button
-                        </button>
-                    </div>
-                    <div class="doc-code">
-                        <pre><code class="language-javascript code-to-format">
-                            // Template code
-                            .doc-info-container {
-                                align-items: center;
-                                border: 1px solid rgb(210, 210, 210);
-                                border-radius: 0.5rem;
-                                box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
-                                display: flex;
-                                flex-direction: column;
-                            }
-                        </code></pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doc-element">
-                <h1 class="doc-title">Title</h1>
-                <p class="doc-description">
-                    Description
-                </p>
-                <div class="doc-info-container">
-                    <div class="doc-example horizontal-center vertical-center">
-                        <button class="doc-example-button">
-                            Template button
-                        </button>
-                    </div>
-                    <div class="doc-code">
-                        <pre><code class="language-javascript code-to-format">
-                            // Template code
-                            .doc-info-container {
-                                align-items: center;
-                                border: 1px solid rgb(210, 210, 210);
-                                border-radius: 0.5rem;
-                                box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
-                                display: flex;
-                                flex-direction: column;
-                            }
-                        </code></pre>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doc-element">
-                <h1 class="doc-title">Title</h1>
-                <p class="doc-description">
-                    Description
-                </p>
-                <div class="doc-info-container">
-                    <div class="doc-example horizontal-center vertical-center">
-                        <button class="doc-example-button">
+                        <button data-modal-id="exampleModal" class="doc-example-button">
                             Template button
                         </button>
                     </div>
@@ -138,6 +60,17 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="modal" id="exampleModal">
+        <div class="modal-dialog">
+            <h3>Title</h3>
+            <p>test</p>
+        </div>
+    </div>
+
+    <div class="modal-shadow">
+
     </div>
 
     <div class="footer-container">
