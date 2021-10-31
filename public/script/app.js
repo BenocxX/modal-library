@@ -1,17 +1,6 @@
 import { $on } from "./helpers.js"
 import * as md from "./modal.js"
 
-const navigationLinks = document.querySelectorAll('a[href^="#"]')
-for (const navigationLink of navigationLinks) {
-    navigationLink.addEventListener("click", function (e) {
-        e.preventDefault()
-        const link = document.querySelector(this.getAttribute("href"))
-        link.scrollIntoView({
-            behavior: "smooth"
-        })
-    })
-}
-
 // Doc: Creating a basic modal
 const modalLaunchers = document.querySelectorAll("[data-modal-launcher]")
 for (const launcher of modalLaunchers) {
