@@ -34,7 +34,12 @@
 
 .navigation-item:hover a {
     color: rgba(0, 0, 0, 1);
-    transform: translateX(0.2rem);
+    transform: translateX(0.4rem);
+}
+
+.active {
+    color: rgba(0, 0, 0, 1) !important;
+    padding-left: 0.4rem !important;
 }
 
 .documentation-container {
