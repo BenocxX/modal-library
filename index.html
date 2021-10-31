@@ -30,11 +30,23 @@
         </div>
     </div>
 
-    <div class="content-container">
-        <!-- Add side navigation bar -->
-
-        <div class="doc-container">
-            <div class="doc-element">
+    <div class="container">
+        <div class="navigation-container">
+            <h1>Navigation</h1>
+            <ul class="links-list">
+                <li class="navigation-item">
+                    <a href="#creatingBasicModal">Creating a basic modal</a>
+                </li>
+                <li class="navigation-item">
+                    <a href="#customizingElementsInModal">Customizing elements in the modal</a>
+                </li>
+                <li class="navigation-item">
+                    <a href="#passingInfoThroughModal">Passing info through modal</a>
+                </li>
+            </ul>
+        </div>
+        <div class="documentation-container">
+            <div id="creatingBasicModal" class="doc-element">
                 <h1 class="doc-title">Creating a basic modal</h1>
                 <p class="doc-description">
                     Description
@@ -72,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="doc-element">
+            <div id="customizingElementsInModal" class="doc-element">
                 <h1 class="doc-title">Customizing elements in the modal</h1>
                 <p class="doc-description">
                     Description
@@ -92,7 +104,7 @@
                                 const dialog = this.querySelector(".modal-dialog")
                                 const dialogTitle = dialog.querySelector("h3")
                                 const dialogText = dialog.querySelector("p")
-                                <!-- Line break in code block -->
+                            <!-- Line break in code block -->
                                 dialogTitle.innerText = "My custom title"
                                 dialogText.innerText = "My custom text"
                             })
@@ -100,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="doc-element">
+            <div id="passingInfoThroughModal" class="doc-element">
                 <h1 class="doc-title">Passing info through modal</h1>
                 <p class="doc-description">
                     Description
@@ -128,7 +140,7 @@
                                 const dialog = this.querySelector(".modal-dialog")
                                 const dialogTitle = dialog.querySelector("h3")
                                 const dialogText = dialog.querySelector("p")
-                                <!-- Line break in code block -->
+                            <!-- Line break in code block -->
                                 dialogTitle.innerText = e.detail.title
                                 dialogText.innerText = e.detail.text
                             })
