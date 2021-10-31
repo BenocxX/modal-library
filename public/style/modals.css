@@ -6,7 +6,7 @@
     position: fixed;
     top: 0;
     width: 100vw;
-    z-index: 10;
+    z-index: 20;
 }
 
 .modal-dialog {
@@ -31,7 +31,7 @@
     position: fixed;
     top: 0;
     width: 100vw;
-    z-index: 5;
+    z-index: 15;
 }
 
 .show {
