@@ -23,6 +23,7 @@ function scrollSpy() {
         }
     };
 }
+
 scrollSpy()
 
 // Doc: Creating a basic modal
