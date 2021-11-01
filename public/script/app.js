@@ -16,7 +16,7 @@ function scrollSpy() {
     window.onscroll = function() {
         let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
         for (i in sectionCoordinates) {
-            if (sectionCoordinates[i] <= scrollPosition) {
+            if (sectionCoordinates[i] <= scrollPosition + 200) {
                 document.querySelector('.active').setAttribute('class', ' ');
                 document.querySelector('a[href*=' + i + ']').setAttribute('class', 'active');
             }
