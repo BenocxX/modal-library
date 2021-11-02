@@ -74,24 +74,20 @@
 
 .doc-example-button {
     background-color: rgb(83, 141, 250);
-    border: 3px solid rgb(54, 109, 214);
+    border: none;
     border-radius: 0.5rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
     color: white;
     font-size: 1.2rem;
     padding: 0.7rem 1rem;
-    transform: scale(1);
     transition: all 0.2s ease-in-out;
 }
 
 .doc-example-button:hover {
     background-color: rgb(61, 124, 242);
-    border: 3px solid rgb(40, 91, 189);
-    transform: scale(1.05);
 }
 
 .doc-example-button:active {
-    transform: translateY(0.15rem) scale(1.05);
+    transform: translateY(0.15rem);
 }
 
 .doc-code {
