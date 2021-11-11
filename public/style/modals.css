@@ -4,7 +4,7 @@
     left: 0;
     pointer-events: none; /* de-activate pointer events so we can exit by clicking the shadow */
     position: fixed;
-    top: 0;
+    top: -20rem;
     width: 100vw;
     z-index: 20;
 }
@@ -96,7 +96,6 @@
 }
 
 .modal-shadow {
-    background-color: rgba(11, 11, 11, 0.5);
     display: none;
     height: 100vh;
     left: 0;
@@ -112,4 +111,41 @@
 
 .hidden {
     display: none;
+}
+
+@keyframes modalDown {
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes modalUp {
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes shadowFadeIn {
+    100% {
+        background-color: rgba(11, 11, 11, 0.5);
+    }
+}
+
+@keyframes shadowFadeOut {
+    100% {
+        background-color: rgba(11, 11, 11, 0);
+    }
+}
+
+.modal.show {
+    animation-name: modalDown;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+.modal-shadow.show {
+    animation-name: shadowFadeIn;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
 }
