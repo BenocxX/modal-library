@@ -35,7 +35,10 @@
             <h1>Navigation</h1>
             <ul class="links-list">
                 <li class="navigation-item">
-                    <a class="active" href="#creatingBasicModal">Creating a basic modal</a>
+                    <a class="active" href="#creatingAlertModal">Create an Alert Modal</a>
+                </li>
+                <li class="navigation-item">
+                    <a href="#creatingBasicModal">Creating a basic modal</a>
                 </li>
                 <li class="navigation-item">
                     <a href="#customizingElementsInModal">Customizing elements in the modal</a>
@@ -46,6 +49,35 @@
             </ul>
         </div>
         <div class="documentation-container">
+            <div id="creatingAlertModal" class="doc-element">
+                <h1 class="doc-title">Create an Alert Modal</h1>
+                <p class="doc-description">
+                    Description
+                </p>
+                <div class="doc-info-container">
+                    <div class="doc-example horizontal-center vertical-center">
+                        <button class="doc-example-button alert-button" data-modal-id="alertModal">
+                            Button
+                        </button>
+                    </div>
+                    <div class="doc-code">
+                        <pre><code class="language-html code-to-format">
+                            &lt;!-- HTML --&gt;
+                            &lt;button class="myButton" data-modal-target="alertModal"&gt;
+                                Button
+                            &lt;/button&gt;
+                        </code></pre>
+
+                        <pre><code class="language-javascript code-to-format">
+                            // JavaScript
+                            const myButton = document.querySelector(".myButton")
+                            myButton.addEventListener("click", (e) => {
+                                md.showAlertButton()
+                            })
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
             <div id="creatingBasicModal" class="doc-element">
                 <h1 class="doc-title">Creating a basic modal</h1>
                 <p class="doc-description">
@@ -165,6 +197,10 @@
                 <button class="modal-button">Test</button>
             </div>
         </div>
+    </div>
+
+    <div class="alert-modal-container">
+
     </div>
 
     <div class="modal" id="exampleModal2">
