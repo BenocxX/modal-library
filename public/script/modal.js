@@ -35,6 +35,50 @@ export function showAlertButton(detail) {
     initEventListenerInModal(modal);
 }
 
+export function showConfirmModal(detail) {
+    if (detail === undefined) {
+        detail = { title: "",  text: "", confirmButton: "", denyButton: "" }
+    }
+    if (detail.title === "") {
+        detail.title = "Confirm Modal";
+    }
+    if (detail.text === "") {
+        detail.text = "Are you sure you want to do this?";
+    }
+    if (detail.confirmButton === "") {
+        detail.confirmButton = "Yes!";
+    }
+    if (detail.denyButton === "") {
+        detail.denyButton = "No!";
+    }
+
+    const html = `
+        <div class="modal" id="confirmModal">
+            <div class="modal-dialog">
+                <div class="modal-header-container">
+                    <h3 class="modal-title">${detail.title}</h3>
+                    <button data-close-button class="modal-button">X</button>
+                </div>
+                <div class="modal-content-container">
+                    <p class="modal-text">${detail.text}</p>
+                </div>
+                <div class="modal-footer-container">
+                    <button data-close-button class="modal-button">${detail.confirmButton}</button>
+                    <button data-close-button class="modal-button">${detail.denyButton}</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-shadow"></div>
+    `
+    const confirmModalContainer = document.querySelector(".confirm-modal-container")
+    confirmModalContainer.innerHTML = html
+
+    const modal = document.querySelector("#confirmModal");
+    initEventListenerInModal(modal);
+    initEventListenerInModal(modal);
+}
+
 export function onModalLaunch(e, detail) {
     const modalType = e.target.dataset.modalId;
     const modal = document.querySelector("#" + modalType);

@@ -42,6 +42,12 @@
                     <a href="#customizeAlertModalInfo">Customizing elements in the alert modal</a>
                 </li>
                 <li class="navigation-item">
+                    <a href="#creatingConfirmModal">Create a Confirm Modal</a>
+                </li>
+                <li class="navigation-item">
+                    <a href="#customizeConfirmModal">Customizing a Confirm Modal</a>
+                </li>
+                <li class="navigation-item">
                     <a href="#creatingBasicModal">Creating a basic modal</a>
                 </li>
                 <li class="navigation-item">
@@ -109,6 +115,69 @@
                                     title: "Custom Alert Title",
                                     text: "My custom alert description"
                                 })
+                            })
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+            <div id="creatingConfirmModal" class="doc-element">
+                <h1 class="doc-title">Create a Confirm Modal</h1>
+                <p class="doc-description">
+                    Description
+                </p>
+                <div class="doc-info-container">
+                    <div class="doc-example horizontal-center vertical-center">
+                        <button class="doc-example-button confirm-button" data-modal-id="confirmModal">
+                            Button
+                        </button>
+                    </div>
+                    <div class="doc-code">
+                        <pre><code class="language-html code-to-format">
+                            &lt;!-- HTML --&gt;
+                            &lt;button class="myButton" data-modal-target="confirmModal"&gt;
+                                Button
+                            &lt;/button&gt;
+                        </code></pre>
+
+                        <pre><code class="language-javascript code-to-format">
+                            // JavaScript
+                            const myButton = document.querySelector(".myButton");
+                            myButton.addEventListener("click", (e) => {
+                                showConfirmModal()
+                            })
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+            <div id="customizeConfirmModal" class="doc-element">
+                <h1 class="doc-title">Customizing a Confirm Modal</h1>
+                <p class="doc-description">
+                    Description
+                </p>
+                <div class="doc-info-container">
+                    <div class="doc-example horizontal-center vertical-center">
+                        <button class="doc-example-button confirm-button2" data-modal-id="confirmModal2">
+                            Button
+                        </button>
+                    </div>
+                    <div class="doc-code">
+                        <pre><code class="language-html code-to-format">
+                            &lt;!-- HTML --&gt;
+                            &lt;button class="myButton" data-modal-target="confirmModal"&gt;
+                                Button
+                            &lt;/button&gt;
+                        </code></pre>
+
+                        <pre><code class="language-javascript code-to-format">
+                            // JavaScript
+                            const myButton = document.querySelector(".myButton")
+                            myButton.addEventListener("click", (e) => {
+                                showConfirmModal({
+                                    title: "Custom Alert Title",
+                                    text: "My custom alert description",
+                                    confirmButton: "Custom confirm button",
+                                    denyButton: "Custom deny button"
+                                });
                             })
                         </code></pre>
                     </div>
@@ -277,6 +346,10 @@
     </div>
 
     <div class="alert-modal-container">
+
+    </div>
+
+    <div class="confirm-modal-container">
 
     </div>
 

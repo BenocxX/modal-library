@@ -15,6 +15,22 @@ alertModalButton2.addEventListener("click", (e) => {
     });
 })
 
+// Doc: Creating a confirm modal
+const confirmModalButton = document.querySelector(".confirm-button");
+confirmModalButton.addEventListener("click", (e) => {
+    md.showConfirmModal()
+})
+
+// Doc: Creating a confirm modal with custom info
+const confirmModalButton2 = document.querySelector(".confirm-button2")
+confirmModalButton2.addEventListener("click", (e) => {
+    md.showConfirmModal({
+        title: "Custom Alert Title",
+        text: "My custom alert description",
+        confirmButton: "Custom confirm button",
+        denyButton: "Custom deny button"
+    });
+})
 
 // Doc: Creating a basic modal
 const modalLaunchers = document.querySelectorAll("[data-modal-launcher]")
