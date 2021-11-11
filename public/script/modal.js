@@ -1,5 +1,3 @@
-import { $on } from "./helpers.js"
-
 export function showAlertButton() {
     const html = `
         <div class="modal" id="alertModal">
