@@ -23,8 +23,13 @@ function scrollSpy() {
         }
     };
 }
-
 scrollSpy()
+
+const alertModalButton = document.querySelector(".alert-button")
+alertModalButton.addEventListener("click", (e) => {
+    md.showAlertButton()
+})
+
 
 // Doc: Creating a basic modal
 const modalLaunchers = document.querySelectorAll("[data-modal-launcher]")
