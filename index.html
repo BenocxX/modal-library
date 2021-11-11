@@ -39,6 +39,9 @@
                     <a class="active" href="#creatingAlertModal">Create an Alert Modal</a>
                 </li>
                 <li class="navigation-item">
+                    <a href="#customizeAlertModalInfo">Customizing elements in the alert modal</a>
+                </li>
+                <li class="navigation-item">
                     <a href="#creatingBasicModal">Creating a basic modal</a>
                 </li>
                 <li class="navigation-item">
@@ -79,6 +82,38 @@
                     </div>
                 </div>
             </div>
+            <div id="customizeAlertModalInfo" class="doc-element">
+                <h1 class="doc-title">Customizing elements in the alert modal</h1>
+                <p class="doc-description">
+                    Description
+                </p>
+                <div class="doc-info-container">
+                    <div class="doc-example horizontal-center vertical-center">
+                        <button class="doc-example-button alert-button2" data-modal-id="alertModal">
+                            Button
+                        </button>
+                    </div>
+                    <div class="doc-code">
+                        <pre><code class="language-html code-to-format">
+                            &lt;!-- HTML --&gt;
+                            &lt;button class="myButton" data-modal-target="alertModal"&gt;
+                                Button
+                            &lt;/button&gt;
+                        </code></pre>
+
+                        <pre><code class="language-javascript code-to-format">
+                            // JavaScript
+                            const myButton = document.querySelector(".myButton")
+                            myButton.addEventListener("click", (e) => {
+                                md.showAlertButton({
+                                    title: "Custom Alert Title",
+                                    text: "My custom alert description"
+                                })
+                            })
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
             <div id="creatingBasicModal" class="doc-element">
                 <h1 class="doc-title">Creating a basic modal</h1>
                 <p class="doc-description">
@@ -99,10 +134,19 @@
                                 Button
                             &lt;/button&gt;
                             <!-- Line break in code block -->
-                            &lt;div class="modal" id="myModal"&gt;
+                            &lt;div class="modal" id="exampleModal1"&gt;
                                 &lt;div class="modal-dialog"&gt;
-                                    &lt;h3&gt;Title&lt;/h3&gt;
-                                    &lt;p&gt;Text&lt;/p&gt;
+                                    &lt;div class="modal-header-container"&gt;
+                                        &lt;h3 class="modal-title"&gt;Title&lt;/h3&gt;
+                                        &lt;button data-close-button class="modal-button"&gt;X&lt;/button&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="modal-content-container"&gt;
+                                        &lt;p class="modal-text"&gt;Text&lt;/p&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="modal-footer-container"&gt;
+                                        &lt;button data-close-button class="modal-button"&gt;Close&lt;/button&gt;
+                                        &lt;button class="modal-button"&gt;Test&lt;/button&gt;
+                                    &lt;/div&gt;
                                 &lt;/div&gt;
                             &lt;/div&gt;
                             <!-- Line break in code block -->
@@ -188,13 +232,13 @@
         <div class="modal-dialog">
             <div class="modal-header-container">
                 <h3 class="modal-title">Title</h3>
-                <button class="modal-button">X</button>
+                <button data-close-button class="modal-button">X</button>
             </div>
             <div class="modal-content-container">
                 <p class="modal-text">Text</p>
             </div>
             <div class="modal-footer-container">
-                <button class="modal-button">Close</button>
+                <button data-close-button class="modal-button">Close</button>
                 <button class="modal-button">Test</button>
             </div>
         </div>

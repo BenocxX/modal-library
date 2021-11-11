@@ -3,7 +3,16 @@ import * as md from "./modal.js"
 // Doc: Creating an alert modal
 const alertModalButton = document.querySelector(".alert-button")
 alertModalButton.addEventListener("click", (e) => {
-    md.showAlertButton()
+    md.showAlertButton();
+})
+
+// Doc: Creating an alert modal with custom info
+const alertModalButton2 = document.querySelector(".alert-button2")
+alertModalButton2.addEventListener("click", (e) => {
+    md.showAlertButton({
+        title: "Custom Alert Title",
+        text: "My custom alert description"
+    });
 })
 
 
@@ -14,8 +23,8 @@ for (const launcher of modalLaunchers) {
         md.onModalLaunch(e, {
             title: "",
             text: ""
-        })
-    })
+        });
+    });
 }
 
 // Doc: Customizing elements in the modal
