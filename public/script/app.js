@@ -1,5 +1,6 @@
 import * as md from "./modal.js"
 
+// Doc: Creating an alert modal
 const alertModalButton = document.querySelector(".alert-button")
 alertModalButton.addEventListener("click", (e) => {
     md.showAlertButton()
@@ -10,7 +11,10 @@ alertModalButton.addEventListener("click", (e) => {
 const modalLaunchers = document.querySelectorAll("[data-modal-launcher]")
 for (const launcher of modalLaunchers) {
     launcher.addEventListener("click", (e) => {
-        md.onModalLaunch(e)
+        md.onModalLaunch(e, {
+            title: "",
+            text: ""
+        })
     })
 }
 

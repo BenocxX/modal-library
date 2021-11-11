@@ -32,7 +32,7 @@ export function showAlertButton() {
 }
 
 export function onModalLaunch(e, detail) {
-    const modalType = e.target.dataset.modalTarget
+    const modalType = e.target.dataset.modalId
     const modal = document.querySelector("#" + modalType)
     const modalShownEvent = new CustomEvent("modal.shown", {
         detail
