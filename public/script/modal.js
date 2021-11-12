@@ -1,4 +1,6 @@
-export function showAlertButton(detail) {
+const shadow = document.querySelector(".modal-shadow");
+
+export function showAlertModal(detail) {
     if (detail === undefined) {
         detail = { title: "",  text: ""}
     }
@@ -24,15 +26,13 @@ export function showAlertButton(detail) {
                 </div>
             </div>
         </div>
-        
-        <div class="modal-shadow"></div>
     `
     const alertModalContainer = document.querySelector(".alert-modal-container")
     alertModalContainer.innerHTML = html
 
     const modal = document.querySelector("#alertModal");
     initEventListenerInModal(modal);
-    initEventListenerInModal(modal);
+    showModal(modal);
 }
 
 export function showConfirmModal(detail) {
@@ -68,15 +68,13 @@ export function showConfirmModal(detail) {
                 </div>
             </div>
         </div>
-        
-        <div class="modal-shadow"></div>
     `
     const confirmModalContainer = document.querySelector(".confirm-modal-container")
     confirmModalContainer.innerHTML = html
 
     const modal = document.querySelector("#confirmModal");
     initEventListenerInModal(modal);
-    initEventListenerInModal(modal);
+    showModal(modal);
 }
 
 export function onModalLaunch(e, detail) {
@@ -88,34 +86,57 @@ export function onModalLaunch(e, detail) {
 
     modal.dispatchEvent(modalShownEvent);
     initEventListenerInModal(modal);
+    showModal(modal);
 }
 
 function initEventListenerInModal(modal) {
-    const shadow = getShadow()
-    showModal(modal, shadow)
 
     shadow.addEventListener("click", (e) => {
-        closeModal(modal, shadow);
+        closeModal(modal);
     })
 
     const closeButtons = modal.querySelectorAll("[data-close-button]");
     for (const closeButton of closeButtons) {
         closeButton.addEventListener("click", (e) => {
-            closeModal(modal, shadow);
+            closeModal(modal);
         })
     }
 }
 
-function getShadow() {
-    return document.querySelector(".modal-shadow");
+function showModal(modal) {
+    modal.classList.add("modal-down");
+    modal.addEventListener('animationend', () => {
+        if (modal.classList.contains("modal-down")) {
+            modal.classList.add("show");
+            modal.classList.remove("modal-down");
+        }
+    });
+
+    shadow.classList.add("fade-in");
+    shadow.addEventListener('animationend', () => {
+        if (shadow.classList.contains("fade-in")) {
+            shadow.classList.add("show");
+            shadow.classList.remove("fade-in");
+        }
+    });
 }
 
-function showModal(modal, shadow) {
-    modal.classList.add("show");
-    shadow.classList.add("show");
-}
-
-function closeModal(modal, shadow) {
+function closeModal(modal) {
     modal.classList.remove("show");
+    modal.classList.add("modal-up");
+    modal.addEventListener('animationend', () => {
+        if (modal.classList.contains("modal-up")) {
+            modal.classList.remove("modal-up");
+            modal.classList.remove("show");
+        }
+    });
+
     shadow.classList.remove("show");
+    shadow.classList.add("fade-out");
+    shadow.addEventListener('animationend', () => {
+        if (shadow.classList.contains("fade-out")) {
+            shadow.classList.remove("fade-out");
+            shadow.classList.remove("show");
+        }
+    });
 }

@@ -114,38 +114,79 @@
 }
 
 @keyframes modalDown {
+    0% {
+        top: -40rem;
+    }
+
     100% {
         top: 0;
     }
 }
 
 @keyframes modalUp {
-    100% {
+    0% {
         top: 0;
+    }
+
+    100% {
+        top: -40rem;
     }
 }
 
-@keyframes shadowFadeIn {
+@keyframes fadeIn {
+    0%{
+        background-color: rgba(11, 11, 11, 0);
+    }
+
     100% {
         background-color: rgba(11, 11, 11, 0.5);
     }
 }
 
-@keyframes shadowFadeOut {
+@keyframes fadeOut {
+    0% {
+        background-color: rgba(11, 11, 11, 0.5);
+    }
+
     100% {
         background-color: rgba(11, 11, 11, 0);
     }
 }
 
-.modal.show {
+.modal.modal-down {
     animation-name: modalDown;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
+    display: block;
+}
+
+.modal.show {
+    top: 0;
+}
+
+.modal.modal-up {
+    animation-name: modalUp;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    display: block;
+}
+
+.modal-shadow.fade-in {
+    animation-name: fadeIn;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    display: block;
 }
 
 .modal-shadow.show {
-    animation-name: shadowFadeIn;
+    background-color: rgba(11, 11, 11, 0.5);
+}
+
+.modal-shadow.fade-out {
+    animation-name: fadeOut;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
+    display: block;
 }

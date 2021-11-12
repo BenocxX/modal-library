@@ -1,15 +1,16 @@
 import * as md from "./modal.js"
+import {showAlertModal} from "./modal.js";
 
 // Doc: Creating an alert modal
 const alertModalButton = document.querySelector(".alert-button")
 alertModalButton.addEventListener("click", (e) => {
-    md.showAlertButton();
+    md.showAlertModal();
 })
 
 // Doc: Creating an alert modal with custom info
 const alertModalButton2 = document.querySelector(".alert-button2")
 alertModalButton2.addEventListener("click", (e) => {
-    md.showAlertButton({
+    md.showAlertModal({
         title: "Custom Alert Title",
         text: "My custom alert description"
     });
