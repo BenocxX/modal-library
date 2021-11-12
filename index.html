@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/atom-one-light.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="public/style/helpers.css">
     <link rel="stylesheet" href="public/style/modals.css">
     <link rel="stylesheet" href="public/style/style.css">
     <link rel="stylesheet" href="public/style/navbar.css">
     <link rel="stylesheet" href="public/style/content.css">
     <link rel="stylesheet" href="public/style/footer.css">
+    <link rel="stylesheet" href="public/style/mobile.css">
     <script type="module" src="public/script/indentationHandler.js"></script>
     <script type="module" src="public/script/app.js"></script>
     <script type="module" src="public/script/scrollSpy.js"></script>
@@ -17,17 +19,22 @@
 </head>
 <body>
     <div class="navbar-container">
-        <div class="navbar-tab tab-active">
-            <a href="#">Documentation</a>
-            <div class="slider"></div>
-        </div>
-        <div class="navbar-tab">
-            <a href="https://getbootstrap.com/docs/5.1/components/modal/" target="_blank">Bootstrap</a>
-            <div class="slider"></div>
-        </div>
-        <div class="navbar-tab">
-            <a href="https://micromodal.vercel.app/" target="_blank">Micromodal</a>
-            <div class="slider"></div>
+        <a href="javascript:void(0);" class="navbar-humberger" onclick="humberger()">
+            <i class="fas fa-bars"></i>
+        </a>
+        <div class="navbar-links">
+            <div class="navbar-tab tab-active">
+                <a href="#">Documentation</a>
+                <div class="slider"></div>
+            </div>
+            <div class="navbar-tab">
+                <a href="https://getbootstrap.com/docs/5.1/components/modal/" target="_blank">Bootstrap</a>
+                <div class="slider"></div>
+            </div>
+            <div class="navbar-tab">
+                <a href="https://micromodal.vercel.app/" target="_blank">Micromodal</a>
+                <div class="slider"></div>
+            </div>
         </div>
     </div>
 

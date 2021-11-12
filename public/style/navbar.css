@@ -12,6 +12,15 @@
     z-index: 10;
 }
 
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-humberger {
+    display: none;
+}
+
 .navbar-tab {
     color: rgb(245, 245, 245);
     font-size: 1.2rem;

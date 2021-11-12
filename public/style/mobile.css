@@ -1,0 +1,45 @@
+@media only screen and (max-width: 780px) {
+    .navigation-container {
+        display: none;
+    }
+
+    .documentation-container {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .doc-element {
+        margin: 5rem 2rem;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+
+    .navbar-container {
+        padding: 1rem;
+    }
+
+    .navbar-container a {
+        text-decoration: none;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+
+    .navbar-humberger {
+        display: block;
+        width: 30px;
+        height: 30px;
+    }
+
+    .navbar-humberger i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        transform: scale(1.2);
+        color: white;
+    }
+}
