@@ -1,5 +1,4 @@
 import * as md from "./modal.js"
-import {showAlertModal} from "./modal.js";
 
 const humberger = document.querySelector(".navbar-humberger");
 humberger.addEventListener("click", () => {
