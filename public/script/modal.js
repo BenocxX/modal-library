@@ -22,7 +22,7 @@ export function showAlertModal(detail) {
                     <p class="modal-text">${detail.text}</p>
                 </div>
                 <div class="modal-footer-container">
-                    <button data-close-button class="modal-button">Close</button>
+                    <button data-close-button class="modal-button bg-light-blue">Close</button>
                 </div>
             </div>
         </div>
@@ -63,8 +63,8 @@ export function showConfirmModal(detail) {
                     <p class="modal-text">${detail.text}</p>
                 </div>
                 <div class="modal-footer-container">
-                    <button data-close-button class="modal-button">${detail.confirmButton}</button>
-                    <button data-close-button class="modal-button">${detail.denyButton}</button>
+                    <button data-close-button class="modal-button bg-light-blue">${detail.confirmButton}</button>
+                    <button data-close-button class="modal-button bg-light-blue">${detail.denyButton}</button>
                 </div>
             </div>
         </div>

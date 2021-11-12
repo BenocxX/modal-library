@@ -1,3 +1,5 @@
+@import "generalCSS.css";
+
 .container {
     align-content: center;
     justify-content: space-between;
@@ -14,31 +16,32 @@
 }
 
 .links-list {
-    border-bottom: 1px solid rgb(230, 230, 230);
+    border-bottom: 1px solid var(--light-white);
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
 .navigation-item {
-    border-top: 1px solid rgb(230, 230, 230);
+    border-top: 1px solid var(--light-white);
     padding: 1rem 0;
 }
 
 .navigation-item a {
-    color: rgba(0, 0, 0, 0.4);
+    color: var(--black);
+    opacity: 0.4;
     display: inline-block;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
 }
 
 .navigation-item:hover a {
-    color: rgba(0, 0, 0, 1);
+    opacity: 1;
     transform: translateX(0.4rem);
 }
 
 .active {
-    color: rgba(0, 0, 0, 1) !important;
+    opacity: 1 !important;
     padding-left: 0.4rem !important;
 }
 
@@ -54,7 +57,7 @@
 
 .doc-info-container {
     align-items: center;
-    border: 1px solid rgb(210, 210, 210);
+    border: 1px solid var(--lighter-gray);
     border-radius: 0.5rem;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 40px 0 rgba(0, 0, 0, 0.1);
     display: flex;
@@ -65,7 +68,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid rgb(210, 210, 210);
+    border-bottom: 1px solid var(--lighter-gray);
     box-sizing: border-box;
     height: 100%;
     padding: 2rem 0 2rem 0;
@@ -73,17 +76,12 @@
 }
 
 .doc-example-button {
-    background-color: rgb(83, 141, 250);
     border: none;
     border-radius: 0.5rem;
-    color: white;
+    color: var(--white);
     font-size: 1.2rem;
     padding: 0.7rem 1rem;
     transition: all 0.2s ease-in-out;
-}
-
-.doc-example-button:hover {
-    background-color: rgb(61, 124, 242);
 }
 
 .doc-example-button:active {
@@ -99,6 +97,6 @@
 
 .doc-code pre code {
     max-height: 40rem;
-    background-color: rgb(245, 245, 245);
+    background-color: var(--lighter-white);
     border-radius: 0 0 0.5rem 0.5rem;
 }

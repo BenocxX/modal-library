@@ -1,6 +1,6 @@
 .footer-container {
     align-items: center;
-    background-color: rgb(245, 245, 245);
+    background-color: var(--lighter-white);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -8,5 +8,5 @@
 }
 
 .footer-info {
-    color: rgb(73, 73, 73);
+    color: var(--dark-gray);
 }

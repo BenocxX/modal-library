@@ -1,6 +1,6 @@
 .navbar-container {
     align-items: center;
-    background-color: rgb(83, 141, 250);
+    background-color: var(--lighter-blue);
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -22,19 +22,19 @@
 }
 
 .navbar-tab {
-    color: rgb(245, 245, 245);
+    color: var(--lighter-white);
     font-size: 1.2rem;
     margin: 1rem;
 }
 
 .navbar-tab > a:link,
 .navbar-tab > a:visited {
-    color: rgb(245, 245, 245);
+    color: var(--lighter-white);
     text-decoration: none;
 }
 
 .navbar-tab > .slider {
-    background-color: rgb(40, 72, 255);
+    background-color: var(--blue);
     height: 1px;
     left: 0;
     margin: 0.2rem auto 0;

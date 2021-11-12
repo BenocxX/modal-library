@@ -40,6 +40,6 @@
         width: 30px;
         height: 30px;
         transform: scale(1.2);
-        color: white;
+        color: var(--white);
     }
 }

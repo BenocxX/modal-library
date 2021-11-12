@@ -1,0 +1,22 @@
+:root {
+    --white: #ffffff;
+    --lighter-white: rgb(245, 245, 245);
+    --light-white: rgb(230, 230, 230);
+    --lighter-gray: rgb(210, 210, 210);
+    --light-gray: #c4c4c4;
+    --gray: #888888;
+    --dark-gray: #545454;
+    --black: #000000;
+
+    --lighter-blue: rgb(83, 141, 250);
+    --light-blue: rgb(61, 124, 242);
+    --blue: rgb(40, 72, 255);
+}
+
+.bg-light-blue {
+    background-color: var(--lighter-blue);
+}
+
+.bg-light-blue:hover {
+    background-color: var(--light-blue);
+}
