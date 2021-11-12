@@ -101,6 +101,8 @@ function initEventListenerInModal(modal) {
             closeModal(modal);
         })
     }
+
+    document.addEventListener('keyup', escTyped);
 }
 
 function showModal(modal) {
@@ -119,6 +121,8 @@ function showModal(modal) {
             shadow.classList.remove("fade-in");
         }
     });
+
+    window.addEventListener('keydown', handleKey);
 }
 
 function closeModal(modal) {
@@ -139,4 +143,54 @@ function closeModal(modal) {
             shadow.classList.remove("show");
         }
     });
+
+    window.removeEventListener('keydown', handleKey);
+}
+
+function escTyped(e) {
+    if (e.code === "Escape") {
+        const modals = document.querySelectorAll(".modal");
+        let currentModal;
+        for (const modal of modals) {
+            if (modal.classList.contains("show") ||
+                modal.classList.contains("modal-down") ||
+                modal.classList.contains("modal-up")) {
+                currentModal = modal;
+            }
+        }
+        closeModal(currentModal);
+        document.removeEventListener("keyup", escTyped)
+    }
+}
+
+// Source: https://stackoverflow.com/a/60031728
+function handleKey(e) {
+    if (e.keyCode === 9) {
+        const modals = document.querySelectorAll(".modal");
+        let currentModal;
+        for (const modal of modals) {
+            if (modal.classList.contains("show") ||
+                modal.classList.contains("modal-down") ||
+                modal.classList.contains("modal-up")) {
+                currentModal = modal;
+            }
+        }
+        let focusable = currentModal.querySelectorAll('input,button,select,textarea');
+        if (focusable.length) {
+            let first = focusable[0];
+            let last = focusable[focusable.length - 1];
+            let shift = e.shiftKey;
+            if (shift) {
+                if (e.target === first) {
+                    last.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (e.target === last) {
+                    first.focus();
+                    e.preventDefault();
+                }
+            }
+        }
+    }
 }
