@@ -132,10 +132,8 @@ export function showAjaxModal(url) {
             return response.text();
         })
         .then(function (htmlModal) {
-            const html = htmlModal;
-
             const ajaxModalContainer = document.querySelector(".ajax-modal-container");
-            ajaxModalContainer.innerHTML = html;
+            ajaxModalContainer.innerHTML = htmlModal;
 
             const modal = ajaxModalContainer.querySelector(".modal");
             initEventListenerInModal(modal);
