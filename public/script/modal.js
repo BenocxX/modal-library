@@ -161,20 +161,24 @@ export function onModalClose(e) {
 }
 
 function initEventListenerInModal(modal) {
+    setEventListenerOnCloseShadow()
+    setEventListenerOnCloseButtons(modal);
+    document.addEventListener('keyup', escTyped);
+}
 
+function setEventListenerOnCloseShadow() {
     shadow.addEventListener("click", (e) => {
         onModalClose();
     })
+}
 
+function setEventListenerOnCloseButtons(modal) {
     const closeButtons = modal.querySelectorAll("[data-close-button]");
     for (const closeButton of closeButtons) {
         closeButton.addEventListener("click", (e) => {
-            closeModal(modal);
             onModalClose();
         })
     }
-
-    document.addEventListener('keyup', escTyped);
 }
 
 function showModal(modal) {
