@@ -45,7 +45,7 @@ export function showAlertModal(detail, callback) {
     const alertModalContainer = document.querySelector(".alert-modal-container")
     alertModalContainer.innerHTML = html
 
-    const modal = document.querySelector("#alertModal");
+    const modal = alertModalContainer.querySelector(".modal");
     initEventListenerInModal(modal);
     showModal(modal);
 
@@ -109,7 +109,7 @@ export function showConfirmModal(detail, callback) {
     const confirmModalContainer = document.querySelector(".confirm-modal-container")
     confirmModalContainer.innerHTML = html
 
-    const modal = document.querySelector("#confirmModal");
+    const modal = confirmModalContainer.querySelector(".modal");
     initEventListenerInModal(modal);
     showModal(modal);
 
@@ -124,6 +124,23 @@ export function showConfirmModal(detail, callback) {
             callback(false)
         });
     }
+}
+
+export function showAjaxModal(url) {
+    fetch(url)
+        .then(function (response) {
+            return response.text();
+        })
+        .then(function (htmlModal) {
+            const html = htmlModal;
+
+            const ajaxModalContainer = document.querySelector(".ajax-modal-container");
+            ajaxModalContainer.innerHTML = html;
+
+            const modal = ajaxModalContainer.querySelector(".modal");
+            initEventListenerInModal(modal);
+            showModal(modal);
+        });
 }
 
 export function onModalLaunch(e, detail) {
@@ -214,6 +231,7 @@ function closeModal(modal) {
     });
 
     window.removeEventListener('keydown', handleKey);
+    // TODO: test removeEventListener from shadow click
 }
 
 function escTyped(e) {

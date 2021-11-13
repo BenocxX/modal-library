@@ -94,3 +94,9 @@ modal3.addEventListener("modal.shown", function (e) {
 modal3.addEventListener("modal.close", function (e) {
     // Your code...
 })
+
+// Doc: Creating an ajax modal
+const ajaxModalButton = document.querySelector(".ajax-button")
+ajaxModalButton.addEventListener("click", (e) => {
+    md.showAjaxModal("modal-ajax.html")
+})
