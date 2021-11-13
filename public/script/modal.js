@@ -58,23 +58,7 @@ export function showAlertModal(detail, callback) {
 export function showConfirmModal(detail, callback) {
     detail = initializeConfirmDetail(detail);
 
-    const html = `
-        <div tabindex="-1" class="modal"  data-animation-in="${detail.animationIn}" data-animation-out="${detail.animationOut}" data-position="${detail.position}" id="confirmModal">
-            <div class="modal-dialog">
-                <div class="modal-header-container">
-                    <h3 class="modal-title">${detail.title}</h3>
-                    <button data-close-button class="modal-button">X</button>
-                </div>
-                <div class="modal-content-container">
-                    <p class="modal-text">${detail.text}</p>
-                </div>
-                <div class="modal-footer-container">
-                    <button data-close-button id="callbackConfirm" class="modal-button bg-light-blue">${detail.confirmButton}</button>
-                    <button data-close-button id="callbackDeny" class="modal-button bg-red">${detail.denyButton}</button>
-                </div>
-            </div>
-        </div>
-    `
+    const html = getConfirmModalHtml();
     const confirmModalContainer = document.querySelector(".confirm-modal-container")
     confirmModalContainer.innerHTML = html
 
@@ -93,6 +77,26 @@ export function showConfirmModal(detail, callback) {
             callback(false)
         });
     }
+}
+
+function getConfirmModalHtml() {
+    return `
+        <div tabindex="-1" class="modal"  data-animation-in="${detail.animationIn}" data-animation-out="${detail.animationOut}" data-position="${detail.position}" id="confirmModal">
+            <div class="modal-dialog">
+                <div class="modal-header-container">
+                    <h3 class="modal-title">${detail.title}</h3>
+                    <button data-close-button class="modal-button">X</button>
+                </div>
+                <div class="modal-content-container">
+                    <p class="modal-text">${detail.text}</p>
+                </div>
+                <div class="modal-footer-container">
+                    <button data-close-button id="callbackConfirm" class="modal-button bg-light-blue">${detail.confirmButton}</button>
+                    <button data-close-button id="callbackDeny" class="modal-button bg-red">${detail.denyButton}</button>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 function initializeConfirmDetail(detail) {
