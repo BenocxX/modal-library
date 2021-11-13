@@ -178,6 +178,13 @@ function initEventListenerInModal(modal) {
 }
 
 function showModal(modal) {
+    showModalAnimation(modal);
+    showShadowAnimation();
+    modal.focus();
+    window.addEventListener('keydown', tabTyped);
+}
+
+function showModalAnimation(modal) {
     modal.classList.add("modal-animation-in");
     modal.addEventListener('animationend', () => {
         if (modal.classList.contains("modal-animation-in")) {
@@ -185,7 +192,9 @@ function showModal(modal) {
             modal.classList.remove("modal-animation-in");
         }
     });
+}
 
+function showShadowAnimation() {
     shadow.classList.add("fade-in");
     shadow.addEventListener('animationend', () => {
         if (shadow.classList.contains("fade-in")) {
@@ -193,14 +202,11 @@ function showModal(modal) {
             shadow.classList.remove("fade-in");
         }
     });
-
-    modal.focus();
-    window.addEventListener('keydown', tabTyped);
 }
 
 function closeModal(modal) {
     closeModalAnimation(modal)
-    closeShadowAniamtion()
+    closeShadowAnimation()
     window.removeEventListener('keydown', tabTyped);
     document.removeEventListener("keyup", escTyped)
 }
@@ -216,7 +222,7 @@ function closeModalAnimation(modal) {
     });
 }
 
-function closeShadowAniamtion() {
+function closeShadowAnimation() {
     shadow.classList.remove("show");
     shadow.classList.add("fade-out");
     shadow.addEventListener('animationend', () => {
