@@ -3,11 +3,7 @@ import * as md from "./modal.js"
 const humberger = document.querySelector(".navbar-humberger");
 humberger.addEventListener("click", () => {
     let links = document.querySelector(".navbar-links");
-    if (links.style.display === "block") {
-        links.style.display = "none";
-    } else {
-        links.style.display = "block";
-    }
+    links.style.display === "block" ? links.style.display = "none" : links.style.display = "block";
 })
 
 // Doc: Creating an alert modal

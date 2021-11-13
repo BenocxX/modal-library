@@ -42,4 +42,8 @@
         transform: scale(1.2);
         color: var(--white);
     }
+
+    .modal-dialog {
+        width: 80vw;
+    }
 }
