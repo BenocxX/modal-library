@@ -233,23 +233,35 @@ function escTyped(e) {
 function tabTyped(e) {
     if (e.keyCode === 9) {
         const currentModal = getCurrentModal();
-        let focusable = currentModal.querySelectorAll('input,button,select,textarea');
-        if (focusable.length) {
-            let first = focusable[0];
-            let last = focusable[focusable.length - 1];
-            let shift = e.shiftKey;
-            if (shift) {
-                if (e.target === first) {
-                    last.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (e.target === last) {
-                    first.focus();
-                    e.preventDefault();
-                }
-            }
+        let focusables = currentModal.querySelectorAll("input, button, select, textarea");
+        if (focusables.length) {
+            moveFocus(e, focusables)
         }
+    }
+}
+
+function moveFocus(e, focusables) {
+    let first = focusables[0];
+    let last = focusables[focusables.length - 1];
+    let shift = e.shiftKey;
+    if (shift) {
+        focusBackward(e, first, last)
+    } else {
+        focusFoward(e, first, last)
+    }
+}
+
+function focusFoward(e, first, last) {
+    if (e.target === last) {
+        first.focus();
+        e.preventDefault();
+    }
+}
+
+function focusBackward(e, first, last) {
+    if (e.target === first) {
+        last.focus();
+        e.preventDefault();
     }
 }
 
