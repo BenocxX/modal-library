@@ -20,4 +20,5 @@ function scrollSpy() {
         }
     };
 }
-scrollSpy()
+
+scrollSpy();

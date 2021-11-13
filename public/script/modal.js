@@ -4,8 +4,8 @@ export function showAlertModal(detail, callback) {
     detail = initializeDetail(detail);
 
     const html = getAlertModalHtml(detail);
-    const alertModalContainer = document.querySelector(".alert-modal-container")
-    alertModalContainer.innerHTML = html
+    const alertModalContainer = document.querySelector(".alert-modal-container");
+    alertModalContainer.innerHTML = html;
 
     const modal = alertModalContainer.querySelector(".modal");
     initEventListenerInModal(modal);
@@ -17,8 +17,8 @@ export function showConfirmModal(detail, callback) {
     detail = initializeDetail(detail);
 
     const html = getConfirmModalHtml(detail);
-    const confirmModalContainer = document.querySelector(".confirm-modal-container")
-    confirmModalContainer.innerHTML = html
+    const confirmModalContainer = document.querySelector(".confirm-modal-container");
+    confirmModalContainer.innerHTML = html;
 
     const modal = confirmModalContainer.querySelector(".modal");
     initEventListenerInModal(modal);
@@ -41,7 +41,7 @@ export function onModalLaunch(e, detail) {
     const modal = document.querySelector("#" + modalType);
     const modalShownEvent = new CustomEvent("modal.shown", {
         detail
-    })
+    });
 
     modal.dispatchEvent(modalShownEvent);
     initEventListenerInModal(modal);
@@ -159,7 +159,7 @@ function showHtmlModal(html) {
 }
 
 function initEventListenerInModal(modal) {
-    setEventListenerOnCloseShadow()
+    setEventListenerOnCloseShadow();
     setEventListenerOnCloseButtons(modal);
     document.addEventListener('keyup', escTyped);
 }
@@ -167,7 +167,7 @@ function initEventListenerInModal(modal) {
 function setEventListenerOnCloseShadow() {
     shadow.addEventListener("click", (e) => {
         onModalClose();
-    })
+    });
 }
 
 function setEventListenerOnCloseButtons(modal) {
@@ -175,7 +175,7 @@ function setEventListenerOnCloseButtons(modal) {
     for (const closeButton of closeButtons) {
         closeButton.addEventListener("click", (e) => {
             onModalClose();
-        })
+        });
     }
 }
 
@@ -207,10 +207,10 @@ function showShadowAnimation() {
 }
 
 function closeModal(modal) {
-    closeModalAnimation(modal)
-    closeShadowAnimation()
+    closeModalAnimation(modal);
+    closeShadowAnimation();
     window.removeEventListener('keydown', tabTyped);
-    document.removeEventListener("keyup", escTyped)
+    document.removeEventListener("keyup", escTyped);
 }
 
 function closeModalAnimation(modal) {
@@ -238,7 +238,7 @@ function closeShadowAnimation() {
 function escTyped(e) {
     if (e.code === "Escape") {
         const docContainer = document.querySelector(".container");
-        docContainer.focus()
+        docContainer.focus();
         const currentModal = getCurrentModal();
         closeModal(currentModal);
     }
@@ -250,7 +250,7 @@ function tabTyped(e) {
         const currentModal = getCurrentModal();
         let focusables = currentModal.querySelectorAll("input, button, select, textarea");
         if (focusables.length) {
-            moveFocus(e, focusables)
+            moveFocus(e, focusables);
         }
     }
 }
