@@ -90,3 +90,7 @@ modal3.addEventListener("modal.shown", function (e) {
     dialogTitle.innerText = e.detail.title
     dialogText.innerText = e.detail.text
 })
+
+modal3.addEventListener("modal.close", function (e) {
+    // Your code...
+})

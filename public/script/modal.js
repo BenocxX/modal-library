@@ -106,16 +106,35 @@ export function onModalLaunch(e, detail) {
     showModal(modal);
 }
 
+export function onModalClose(e) {
+    let currentModal;
+    const modals = document.querySelectorAll(".modal");
+    for (const modal of modals) {
+        if (modal.classList.contains("show") ||
+            modal.classList.contains("modal-down") ||
+            modal.classList.contains("modal-up")) {
+            currentModal = modal;
+        }
+    }
+
+    const modalCloseEvent = new CustomEvent("modal.close");
+
+    currentModal.dispatchEvent(modalCloseEvent);
+    closeModal(currentModal);
+}
+
 function initEventListenerInModal(modal) {
 
     shadow.addEventListener("click", (e) => {
         closeModal(modal);
+        onModalClose();
     })
 
     const closeButtons = modal.querySelectorAll("[data-close-button]");
     for (const closeButton of closeButtons) {
         closeButton.addEventListener("click", (e) => {
             closeModal(modal);
+            onModalClose();
         })
     }
 
