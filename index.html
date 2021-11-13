@@ -20,7 +20,7 @@
 </head>
 <body>
     <div class="navbar-container">
-        <a href="javascript:void(0);" class="navbar-humberger">
+        <a href="#" class="navbar-hamburger">
             <i class="fas fa-bars"></i>
         </a>
         <div class="navbar-links">
@@ -44,10 +44,13 @@
             <h1>Navigation</h1>
             <ul class="links-list">
                 <li class="navigation-item">
+                    <a class="active" href="#importingLibrary">How to import the librairie?</a>
+                </li>
+                <li class="navigation-item">
                     <a class="active" href="#creatingAlertModal">Create an Alert Modal</a>
                 </li>
                 <li class="navigation-item">
-                    <a href="#customizeAlertModalInfo">Customizing elements in the alert modal</a>
+                    <a href="#customizeAlertModalInfo">Customizing an Alert Modal</a>
                 </li>
                 <li class="navigation-item">
                     <a href="#creatingConfirmModal">Create a Confirm Modal</a>
@@ -56,7 +59,10 @@
                     <a href="#customizeConfirmModal">Customizing a Confirm Modal</a>
                 </li>
                 <li class="navigation-item">
-                    <a href="#creatingBasicModal">Creating a basic modal</a>
+                    <a href="#creatingAjaxModal">Creating a modal with Ajax</a>
+                </li>
+                <li class="navigation-item">
+                    <a href="#creatingCustomModal">Creating a custom modal</a>
                 </li>
                 <li class="navigation-item">
                     <a href="#customizingElementsInModal">Customizing elements in the modal</a>
@@ -65,15 +71,41 @@
                     <a href="#passingInfoThroughModal">Passing info through modal</a>
                 </li>
                 <li class="navigation-item">
-                    <a href="#creatingAjaxModal">Creating a modal with Ajax</a>
+                    <a href="#usingOnCloseCustomEvent">Using the close custom event</a>
                 </li>
             </ul>
         </div>
         <div class="documentation-container">
+            <div id="importingLibrary" class="doc-element">
+                <h1 class="doc-title">How to import the librairie?</h1>
+                <p class="doc-description">
+                    To use our modal librairie, you first need to import the javascript and css files to your project.
+                </p>
+                <div class="doc-info-container">
+                    <div class="doc-code">
+                        <pre><code class="language-html code-to-format">
+                            &lt;!-- HTML --&gt;
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+                            &lt;head&gt;
+                                &lt;meta charset="UTF-8"&gt;
+                                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                                &lt;link rel="stylesheet" href="public/style/modals.css"&gt;
+                                &lt;title&gt;Your website&lt;/title&gt;
+                            &lt;/head&gt;
+                        </code></pre>
+                        <pre><code class="language-javascript code-to-format">
+                            // Javascript
+                            import * as md from "./modal.js";
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+
             <div id="creatingAlertModal" class="doc-element">
                 <h1 class="doc-title">Create an Alert Modal</h1>
                 <p class="doc-description">
-                    Description
+                    To create a simple alert modal, you can simply call the function "showAlertModal()".
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
@@ -88,21 +120,23 @@
                                 Button
                             &lt;/button&gt;
                         </code></pre>
-
                         <pre><code class="language-javascript code-to-format">
                             // JavaScript
-                            const myButton = document.querySelector(".myButton")
-                            myButton.addEventListener("click", (e) => {
-                                md.showAlertButton()
-                            })
+                            const myButton = document.querySelector(".myButton");
+                            myButton.addEventListener("click", () => {
+                                md.showAlertButton(); // Will show an alert modal
+                            });
                         </code></pre>
                     </div>
                 </div>
             </div>
+
             <div id="customizeAlertModalInfo" class="doc-element">
-                <h1 class="doc-title">Customizing elements in the alert modal</h1>
+                <h1 class="doc-title">Customizing an Alert Modal</h1>
                 <p class="doc-description">
-                    Description
+                    You can customize elements shown in the alert modal using the detail object. Every field in this object as a default value, so you don't need to specify the field if you don't need it.
+                    <br></br>
+                    You can also specify a callback function to be called when the user press the button in the modal.
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
@@ -117,24 +151,29 @@
                                 Button
                             &lt;/button&gt;
                         </code></pre>
-
                         <pre><code class="language-javascript code-to-format">
                             // JavaScript
-                            const myButton = document.querySelector(".myButton")
-                            myButton.addEventListener("click", (e) => {
+                            const myButton = document.querySelector(".myButton");
+                            myButton.addEventListener("click", () => {
                                 md.showAlertButton({
                                     title: "Custom Alert Title",
-                                    text: "My custom alert description"
-                                })
-                            })
+                                    text: "My custom alert description",
+                                    position: "top", // Choice: { "top", "middle" }
+                                    animationIn: "down", // Choice: { "down", "fade" }
+                                    animationOut: "up" // Choice: { "up", "fade" }
+                                }, () => {
+                                    alert("This is a callback!");
+                                });
+                            });
                         </code></pre>
                     </div>
                 </div>
             </div>
+
             <div id="creatingConfirmModal" class="doc-element">
                 <h1 class="doc-title">Create a Confirm Modal</h1>
                 <p class="doc-description">
-                    Description
+                    To create a simple confirm modal, you can simply call the function "showConfirmModal()".
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
@@ -149,21 +188,23 @@
                                 Button
                             &lt;/button&gt;
                         </code></pre>
-
                         <pre><code class="language-javascript code-to-format">
                             // JavaScript
                             const myButton = document.querySelector(".myButton");
-                            myButton.addEventListener("click", (e) => {
-                                showConfirmModal()
-                            })
+                            myButton.addEventListener("click", () => {
+                                showConfirmModal(); // Will show a confirm modal
+                            });
                         </code></pre>
                     </div>
                 </div>
             </div>
+
             <div id="customizeConfirmModal" class="doc-element">
                 <h1 class="doc-title">Customizing a Confirm Modal</h1>
                 <p class="doc-description">
-                    Description
+                    You can customize elements shown in the confirm modal using the detail object. Every field in this object as a default value, so you don't need to specify the field if you don't need it.
+                    <br></br>
+                    You can also specify a callback function taking a boolean as a parameter to be called when the user press one of the two buttons in the modal.
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
@@ -178,26 +219,54 @@
                                 Button
                             &lt;/button&gt;
                         </code></pre>
-
                         <pre><code class="language-javascript code-to-format">
                             // JavaScript
-                            const myButton = document.querySelector(".myButton")
-                            myButton.addEventListener("click", (e) => {
+                            const myButton = document.querySelector(".myButton");
+                            myButton.addEventListener("click", () => {
                                 showConfirmModal({
                                     title: "Custom Alert Title",
                                     text: "My custom alert description",
                                     confirmButton: "Custom confirm button",
-                                    denyButton: "Custom deny button"
+                                    denyButton: "Custom deny button",
+                                    position: "top", // Choice: { "top", "middle" }
+                                    animationIn: "down", // Choice: { "down", "fade" }
+                                    animationOut: "up" // Choice: { "up", "fade" }
+                                }, (answer) => {
+                                    answer ? alert("User confirmed!") : alert("User denied!");
                                 });
-                            })
+                            });
                         </code></pre>
                     </div>
                 </div>
             </div>
-            <div id="creatingBasicModal" class="doc-element">
-                <h1 class="doc-title">Creating a basic modal</h1>
+
+            <div id="creatingAjaxModal" class="doc-element">
+                <h1 class="doc-title">Creating a modal with Ajax</h1>
                 <p class="doc-description">
-                    Description
+                    You can also fetch a modal with Ajax! Use a pre-existing html file or a URL to fetch your modal.
+                </p>
+                <div class="doc-info-container">
+                    <div class="doc-example horizontal-center vertical-center">
+                        <button class="doc-example-button ajax-button bg-light-blue" data-modal-id="ajaxModal">
+                            Button
+                        </button>
+                    </div>
+                    <div class="doc-code">
+                        <pre><code class="language-javascript code-to-format">
+                            // Javascript
+                            const myButton = document.querySelector(".myButton");
+                            myButton.addEventListener("click", () => {
+                                md.showAjaxModal("path/to/html/file or URL");
+                            });
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div id="creatingCustomModal" class="doc-element">
+                <h1 class="doc-title">Creating a custom modal</h1>
+                <p class="doc-description">
+                    You can also create your own custom modal.
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
@@ -209,12 +278,20 @@
                     <div class="doc-code">
                         <pre><code class="language-html code-to-format">
                             &lt;!-- HTML --&gt;
+                            &lt;!-- Use the "data-modal-launcher" attribute to bind the button to all launchers --&gt;
+                            &lt;!-- Then use the "data-modal-id" attribute to bind the button to your custom modal --&gt;
                             &lt;button class="myButton bg-light-blue" data-modal-launcher
                                         data-modal-id="myModal"&gt;
                                 Button
                             &lt;/button&gt;
                             <!-- Line break in code block -->
-                            &lt;div class="modal" id="exampleModal1"&gt;
+                            &lt;!-- You need to specify which animations you want to use with: --&gt;
+                            &lt;!--     - data-animation-in="down" (or "fade")  --&gt;
+                            &lt;!--     - data-animation-out="up" (or "fade")  --&gt;
+                            <!-- Line break in code block -->
+                            &lt;!-- You also need to specify where you want your modal to be shown: --&gt;
+                            &lt;!--     - data-position="top" (or "middle")  --&gt;
+                            &lt;div data-animation-in="down" data-animation-out="up" data-position="top" class="modal" id="exampleModal1" tabindex="-1"&gt;
                                 &lt;div class="modal-dialog"&gt;
                                     &lt;div class="modal-header-container"&gt;
                                         &lt;h3 class="modal-title"&gt;Title&lt;/h3&gt;
@@ -235,16 +312,17 @@
 
                         <pre><code class="language-javascript code-to-format">
                             // JavaScript
-                            const myButton = document.querySelector("[data-modal-launcher]")
-                            myButton.addEventListener("click", onModalLaunch)
+                            const myButton = document.querySelector(".myButton");
+                            myButton.addEventListener("click", onModalLaunch);
                         </code></pre>
                     </div>
                 </div>
             </div>
+
             <div id="customizingElementsInModal" class="doc-element">
                 <h1 class="doc-title">Customizing elements in the modal</h1>
                 <p class="doc-description">
-                    Description
+                    You can customize the information shown in your modal with Javascript like you would do for anything on your website.
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
@@ -256,23 +334,24 @@
                     <div class="doc-code">
                         <pre><code class="language-javascript code-to-format">
                             // JavaScript
-                            const modal = document.querySelector("#myModal")
+                            const modal = document.querySelector("#myModal");
                             modal.addEventListener("modal.shown", function (e) {
-                                const dialog = this.querySelector(".modal-dialog")
-                                const dialogTitle = dialog.querySelector("h3")
-                                const dialogText = dialog.querySelector("p")
-                            <!-- Line break in code block -->
-                                dialogTitle.innerText = "My custom title"
-                                dialogText.innerText = "My custom text"
-                            })
+                                const dialog = this.querySelector(".modal-dialog");
+                                const dialogTitle = dialog.querySelector("h3");
+                                const dialogText = dialog.querySelector("p");
+                                <!-- Line break in code block -->
+                                dialogTitle.innerText = "My custom title";
+                                dialogText.innerText = "My custom text";
+                            });
                         </code></pre>
                     </div>
                 </div>
             </div>
+
             <div id="passingInfoThroughModal" class="doc-element">
                 <h1 class="doc-title">Passing info through modal</h1>
                 <p class="doc-description">
-                    Description
+                    You can also use the detail object to pass information to your custom modal.
                 </p>
                 <div class="doc-info-container">
                     <div class="doc-example horizontal-center vertical-center">
@@ -284,41 +363,41 @@
                     <div class="doc-code">
                         <pre><code class="language-javascript code-to-format">
                             // JavaScript
-                            const myButton = document.querySelector("#myButton")
-                                .addEventListener("click", (e) => {
-                                    onModalLaunch(e, {
-                                        title: "Where am I from?",
-                                        text: "I am text coming from the \"detail\" parameter!"
-                                    })
-                                })
+                            const myButton = document.querySelector("#myButton");
+                            myButton.addEventListener("click", (e) => {
+                                onModalLaunch(e, {
+                                    title: "Where am I from?",
+                                    text: "I am text coming from the \"detail\" parameter!"
+                                });
+                            });
                             <!-- Line break in code block -->
-                            const modal = document.querySelector("#myModal")
+                            const modal = document.querySelector("#myModal");
                             modal.addEventListener("modal.shown", function (e) {
-                                const dialog = this.querySelector(".modal-dialog")
-                                const dialogTitle = dialog.querySelector("h3")
-                                const dialogText = dialog.querySelector("p")
+                                const dialog = this.querySelector(".modal-dialog");
+                                const dialogTitle = dialog.querySelector("h3");
+                                const dialogText = dialog.querySelector("p");
                             <!-- Line break in code block -->
-                                dialogTitle.innerText = e.detail.title
-                                dialogText.innerText = e.detail.text
-                            })
+                                dialogTitle.innerText = e.detail.title; // Use the detail object to get your information
+                                dialogText.innerText = e.detail.text;
+                            });
                         </code></pre>
                     </div>
                 </div>
             </div>
-            <div id="creatingAjaxModal" class="doc-element">
-                <h1 class="doc-title">Creating a modal with Ajax</h1>
+
+            <div id="usingOnCloseCustomEvent" class="doc-element">
+                <h1 class="doc-title">Using the close custom event</h1>
                 <p class="doc-description">
-                    Description
+                    You can use the "modal.close" custom event to run code when the modal is closing.
                 </p>
                 <div class="doc-info-container">
-                    <div class="doc-example horizontal-center vertical-center">
-                        <button class="doc-example-button ajax-button bg-light-blue" data-modal-id="ajaxModal">
-                            Button
-                        </button>
-                    </div>
                     <div class="doc-code">
                         <pre><code class="language-javascript code-to-format">
-                            // Doc
+                            // Javascript
+                            const modal = document.querySelector("#myModal");
+                            modal.addEventListener("modal.close", () => {
+                                // Your code...
+                            })
                         </code></pre>
                     </div>
                 </div>

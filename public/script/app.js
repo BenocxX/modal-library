@@ -1,10 +1,16 @@
 import * as md from "./modal.js"
 
-const humberger = document.querySelector(".navbar-humberger");
-humberger.addEventListener("click", () => {
+const hamburger = document.querySelector(".navbar-hamburger");
+hamburger.addEventListener("click", (e) => {
+    e.preventDefault();
     let links = document.querySelector(".navbar-links");
     links.style.display === "block" ? links.style.display = "none" : links.style.display = "block";
 })
+
+window.addEventListener('resize', (e) => {
+    let links = document.querySelector(".navbar-links");
+    e.currentTarget.innerWidth > 550 ? links.style.display = "flex" : links.style.display = "none";
+});
 
 // Doc: Creating an alert modal
 const alertModalButton = document.querySelector(".alert-button")
@@ -38,23 +44,20 @@ confirmModalButton2.addEventListener("click", (e) => {
         confirmButton: "Custom confirm button",
         denyButton: "Custom deny button"
     }, (answer) => {
-        if (answer) {
-            alert("User confirmed");
-        } else {
-            alert("User denied");
-        }
+        answer ? alert("User confirmed!") : alert("User denied!");
     });
+})
+
+// Doc: Creating an ajax modal
+const ajaxModalButton = document.querySelector(".ajax-button")
+ajaxModalButton.addEventListener("click", (e) => {
+    md.showAjaxModal("modal-ajax.html")
 })
 
 // Doc: Creating a basic modal
 const modalLaunchers = document.querySelectorAll("[data-modal-launcher]")
 for (const launcher of modalLaunchers) {
-    launcher.addEventListener("click", (e) => {
-        md.onModalLaunch(e, {
-            title: "",
-            text: ""
-        });
-    });
+    launcher.addEventListener("click", md.onModalLaunch);
 }
 
 // Doc: Customizing elements in the modal
@@ -89,10 +92,4 @@ modal3.addEventListener("modal.shown", function (e) {
 
 modal3.addEventListener("modal.close", function (e) {
     // Your code...
-})
-
-// Doc: Creating an ajax modal
-const ajaxModalButton = document.querySelector(".ajax-button")
-ajaxModalButton.addEventListener("click", (e) => {
-    md.showAjaxModal("modal-ajax.html")
 })
