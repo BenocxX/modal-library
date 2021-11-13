@@ -154,18 +154,8 @@ export function onModalLaunch(e, detail) {
 }
 
 export function onModalClose(e) {
-    let currentModal;
-    const modals = document.querySelectorAll(".modal");
-    for (const modal of modals) {
-        if (modal.classList.contains("show") ||
-            modal.classList.contains("modal-animation-in") ||
-            modal.classList.contains("modal-animation-out")) {
-            currentModal = modal;
-        }
-    }
-
+    const currentModal = getCurrentModal();
     const modalCloseEvent = new CustomEvent("modal.close");
-
     currentModal.dispatchEvent(modalCloseEvent);
     closeModal(currentModal);
 }
@@ -173,7 +163,6 @@ export function onModalClose(e) {
 function initEventListenerInModal(modal) {
 
     shadow.addEventListener("click", (e) => {
-        closeModal(modal);
         onModalClose();
     })
 
@@ -206,7 +195,7 @@ function showModal(modal) {
     });
 
     modal.focus();
-    window.addEventListener('keydown', handleKey);
+    window.addEventListener('keydown', tabTyped);
 }
 
 function closeModal(modal) {
@@ -228,38 +217,22 @@ function closeModal(modal) {
         }
     });
 
-    window.removeEventListener('keydown', handleKey);
+    window.removeEventListener('keydown', tabTyped);
     // TODO: test removeEventListener from shadow click
 }
 
 function escTyped(e) {
     if (e.code === "Escape") {
-        const modals = document.querySelectorAll(".modal");
-        let currentModal;
-        for (const modal of modals) {
-            if (modal.classList.contains("show") ||
-                modal.classList.contains("modal-animation-in") ||
-                modal.classList.contains("modal-animation-out")) {
-                currentModal = modal;
-            }
-        }
+        const currentModal = getCurrentModal();
         closeModal(currentModal);
         document.removeEventListener("keyup", escTyped)
     }
 }
 
 // Source: https://stackoverflow.com/a/60031728
-function handleKey(e) {
+function tabTyped(e) {
     if (e.keyCode === 9) {
-        const modals = document.querySelectorAll(".modal");
-        let currentModal;
-        for (const modal of modals) {
-            if (modal.classList.contains("show") ||
-                modal.classList.contains("modal-animation-in") ||
-                modal.classList.contains("modal-animation-out")) {
-                currentModal = modal;
-            }
-        }
+        const currentModal = getCurrentModal();
         let focusable = currentModal.querySelectorAll('input,button,select,textarea');
         if (focusable.length) {
             let first = focusable[0];
@@ -276,6 +249,17 @@ function handleKey(e) {
                     e.preventDefault();
                 }
             }
+        }
+    }
+}
+
+function getCurrentModal() {
+    const modals = document.querySelectorAll(".modal");
+    for (const modal of modals) {
+        if (modal.classList.contains("show") ||
+            modal.classList.contains("modal-animation-in") ||
+            modal.classList.contains("modal-animation-out")) {
+            return modal;
         }
     }
 }
