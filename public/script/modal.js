@@ -1,6 +1,6 @@
 const shadow = document.querySelector(".modal-shadow");
 
-export function showAlertModal(detail) {
+export function showAlertModal(detail, callback) {
     if (detail === undefined) {
         detail = { title: "",  text: ""}
     }
@@ -22,7 +22,7 @@ export function showAlertModal(detail) {
                     <p class="modal-text">${detail.text}</p>
                 </div>
                 <div class="modal-footer-container">
-                    <button data-close-button class="modal-button bg-light-blue">Close</button>
+                    <button data-close-button id="callbackButton" class="modal-button bg-light-blue">Close</button>
                 </div>
             </div>
         </div>
@@ -33,9 +33,14 @@ export function showAlertModal(detail) {
     const modal = document.querySelector("#alertModal");
     initEventListenerInModal(modal);
     showModal(modal);
+
+    if (callback !== undefined) {
+        const callbackButton = modal.querySelector("#callbackButton");
+        callbackButton.addEventListener("click", callback);
+    }
 }
 
-export function showConfirmModal(detail) {
+export function showConfirmModal(detail, callback) {
     if (detail === undefined) {
         detail = { title: "",  text: "", confirmButton: "", denyButton: "" }
     }
@@ -63,8 +68,8 @@ export function showConfirmModal(detail) {
                     <p class="modal-text">${detail.text}</p>
                 </div>
                 <div class="modal-footer-container">
-                    <button data-close-button class="modal-button bg-light-blue">${detail.confirmButton}</button>
-                    <button data-close-button class="modal-button bg-light-blue">${detail.denyButton}</button>
+                    <button data-close-button id="callbackConfirm" class="modal-button bg-light-blue">${detail.confirmButton}</button>
+                    <button data-close-button id="callbackDeny" class="modal-button bg-light-blue">${detail.denyButton}</button>
                 </div>
             </div>
         </div>
@@ -75,6 +80,18 @@ export function showConfirmModal(detail) {
     const modal = document.querySelector("#confirmModal");
     initEventListenerInModal(modal);
     showModal(modal);
+
+    if (callback !== undefined) {
+        const callbackConfirmButton = modal.querySelector("#callbackConfirm");
+        callbackConfirmButton.addEventListener("click", () => {
+            callback(true)
+        });
+
+        const callbackDenyButton = modal.querySelector("#callbackDeny");
+        callbackDenyButton.addEventListener("click", () => {
+            callback(false)
+        });
+    }
 }
 
 export function onModalLaunch(e, detail) {
