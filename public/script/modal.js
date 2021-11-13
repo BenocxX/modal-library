@@ -13,6 +13,48 @@ export function showAlertModal(detail, callback) {
     setAlertModalCallback(callback, modal);
 }
 
+export function showConfirmModal(detail, callback) {
+    detail = initializeDetail(detail);
+
+    const html = getConfirmModalHtml(detail);
+    const confirmModalContainer = document.querySelector(".confirm-modal-container")
+    confirmModalContainer.innerHTML = html
+
+    const modal = confirmModalContainer.querySelector(".modal");
+    initEventListenerInModal(modal);
+    showModal(modal);
+    setConfirmModalCallbacks(callback, modal);
+}
+
+export function showAjaxModal(url) {
+    fetch(url)
+        .then((response) => {
+            return response.text();
+        })
+        .then((html) => {
+            showHtmlModal(html)
+        });
+}
+
+export function onModalLaunch(e, detail) {
+    const modalType = e.target.dataset.modalId;
+    const modal = document.querySelector("#" + modalType);
+    const modalShownEvent = new CustomEvent("modal.shown", {
+        detail
+    })
+
+    modal.dispatchEvent(modalShownEvent);
+    initEventListenerInModal(modal);
+    showModal(modal);
+}
+
+export function onModalClose(e) {
+    const currentModal = getCurrentModal();
+    const modalCloseEvent = new CustomEvent("modal.close");
+    currentModal.dispatchEvent(modalCloseEvent);
+    closeModal(currentModal);
+}
+
 function setAlertModalCallback(callback, modal) {
     if (callback !== undefined) {
         const callbackButton = modal.querySelector("#callbackButton");
@@ -37,19 +79,6 @@ function getAlertModalHtml(detail) {
             </div>
         </div>
     `;
-}
-
-export function showConfirmModal(detail, callback) {
-    detail = initializeDetail(detail);
-
-    const html = getConfirmModalHtml(detail);
-    const confirmModalContainer = document.querySelector(".confirm-modal-container")
-    confirmModalContainer.innerHTML = html
-
-    const modal = confirmModalContainer.querySelector(".modal");
-    initEventListenerInModal(modal);
-    showModal(modal);
-    setConfirmModalCallbacks(callback, modal);
 }
 
 function setConfirmModalCallbacks(callback, modal) {
@@ -120,16 +149,6 @@ function valueIfKeyEmpty(value, defaultValue) {
     return value;
 }
 
-export function showAjaxModal(url) {
-    fetch(url)
-        .then((response) => {
-            return response.text();
-        })
-        .then((html) => {
-            showHtmlModal(html)
-        });
-}
-
 function showHtmlModal(html) {
     const ajaxModalContainer = document.querySelector(".ajax-modal-container");
     ajaxModalContainer.innerHTML = html;
@@ -137,25 +156,6 @@ function showHtmlModal(html) {
     const modal = ajaxModalContainer.querySelector(".modal");
     initEventListenerInModal(modal);
     showModal(modal);
-}
-
-export function onModalLaunch(e, detail) {
-    const modalType = e.target.dataset.modalId;
-    const modal = document.querySelector("#" + modalType);
-    const modalShownEvent = new CustomEvent("modal.shown", {
-        detail
-    })
-
-    modal.dispatchEvent(modalShownEvent);
-    initEventListenerInModal(modal);
-    showModal(modal);
-}
-
-export function onModalClose(e) {
-    const currentModal = getCurrentModal();
-    const modalCloseEvent = new CustomEvent("modal.close");
-    currentModal.dispatchEvent(modalCloseEvent);
-    closeModal(currentModal);
 }
 
 function initEventListenerInModal(modal) {
