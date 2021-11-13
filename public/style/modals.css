@@ -38,6 +38,11 @@
     display: flex;
     flex-direction: row;
     justify-content: start;
+    max-height: 30rem;
+}
+
+.modal-content-container .modal-text {
+    overflow-y: auto;
 }
 
 .modal-footer-container {
