@@ -116,7 +116,7 @@
                     <div class="doc-code">
                         <pre><code class="language-html code-to-format">
                             &lt;!-- HTML --&gt;
-                            &lt;button class="myButton bg-light-blue" data-modal-target="alertModal"&gt;
+                            &lt;button class="myButton bg-light-blue" data-modal-target="alertModal" aria-label="Button"&gt;
                                 Button
                             &lt;/button&gt;
                         </code></pre>
@@ -147,7 +147,7 @@
                     <div class="doc-code">
                         <pre><code class="language-html code-to-format">
                             &lt;!-- HTML --&gt;
-                            &lt;button class="myButton bg-light-blue" data-modal-target="alertModal"&gt;
+                            &lt;button class="myButton bg-light-blue" data-modal-target="alertModal" aria-label="Button"&gt;
                                 Button
                             &lt;/button&gt;
                         </code></pre>
@@ -184,7 +184,7 @@
                     <div class="doc-code">
                         <pre><code class="language-html code-to-format">
                             &lt;!-- HTML --&gt;
-                            &lt;button class="myButton bg-light-blue" data-modal-target="confirmModal"&gt;
+                            &lt;button class="myButton bg-light-blue" data-modal-target="confirmModal" aria-label="Button"&gt;
                                 Button
                             &lt;/button&gt;
                         </code></pre>
@@ -215,7 +215,7 @@
                     <div class="doc-code">
                         <pre><code class="language-html code-to-format">
                             &lt;!-- HTML --&gt;
-                            &lt;button class="myButton bg-light-blue" data-modal-target="confirmModal"&gt;
+                            &lt;button class="myButton bg-light-blue" data-modal-target="confirmModal" aria-label="Button"&gt;
                                 Button
                             &lt;/button&gt;
                         </code></pre>
@@ -252,6 +252,12 @@
                         </button>
                     </div>
                     <div class="doc-code">
+                        <pre><code class="language-html code-to-format">
+                            &lt;!-- HTML --&gt;
+                            &lt;button class="myButton bg-light-blue" data-modal-id="ajaxModal" aria-label="Button"&gt;
+                                Button
+                            &lt;/button&gt;
+                        </code></pre>
                         <pre><code class="language-javascript code-to-format">
                             // Javascript
                             const myButton = document.querySelector(".myButton");
@@ -281,7 +287,7 @@
                             &lt;!-- Use the "data-modal-launcher" attribute to bind the button to all launchers --&gt;
                             &lt;!-- Then use the "data-modal-id" attribute to bind the button to your custom modal --&gt;
                             &lt;button class="myButton bg-light-blue" data-modal-launcher
-                                        data-modal-id="myModal"&gt;
+                                        data-modal-id="myModal" aria-label="Button"&gt;
                                 Button
                             &lt;/button&gt;
                             <!-- Line break in code block -->
@@ -295,14 +301,14 @@
                                 &lt;div class="modal-dialog"&gt;
                                     &lt;div class="modal-header-container"&gt;
                                         &lt;h3 class="modal-title"&gt;Title&lt;/h3&gt;
-                                        &lt;button data-close-button class="modal-button"&gt;X&lt;/button&gt;
+                                        &lt;button data-close-button class="modal-button" aria-label="'X' Close Button"&gt;X&lt;/button&gt;
                                     &lt;/div&gt;
                                     &lt;div class="modal-content-container"&gt;
                                         &lt;p class="modal-text"&gt;Text&lt;/p&gt;
                                     &lt;/div&gt;
                                     &lt;div class="modal-footer-container"&gt;
-                                        &lt;button data-close-button class="modal-button"&gt;Close&lt;/button&gt;
-                                        &lt;button class="modal-button"&gt;Test&lt;/button&gt;
+                                        &lt;button data-close-button class="modal-button" aria-label="Close Button"&gt;Close&lt;/button&gt;
+                                        &lt;button class="modal-button" aria-label="Test Button"&gt;Test&lt;/button&gt;
                                     &lt;/div&gt;
                                 &lt;/div&gt;
                             &lt;/div&gt;
