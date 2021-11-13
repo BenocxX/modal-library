@@ -199,6 +199,13 @@ function showModal(modal) {
 }
 
 function closeModal(modal) {
+    closeModalAnimation(modal)
+    closeShadowAniamtion()
+    window.removeEventListener('keydown', tabTyped);
+    document.removeEventListener("keyup", escTyped)
+}
+
+function closeModalAnimation(modal) {
     modal.classList.remove("show");
     modal.classList.add("modal-animation-out");
     modal.addEventListener('animationend', () => {
@@ -207,7 +214,9 @@ function closeModal(modal) {
             modal.classList.remove("show");
         }
     });
+}
 
+function closeShadowAniamtion() {
     shadow.classList.remove("show");
     shadow.classList.add("fade-out");
     shadow.addEventListener('animationend', () => {
@@ -216,16 +225,14 @@ function closeModal(modal) {
             shadow.classList.remove("show");
         }
     });
-
-    window.removeEventListener('keydown', tabTyped);
-    // TODO: test removeEventListener from shadow click
 }
 
 function escTyped(e) {
     if (e.code === "Escape") {
+        const docContainer = document.querySelector(".container");
+        docContainer.focus()
         const currentModal = getCurrentModal();
         closeModal(currentModal);
-        document.removeEventListener("keyup", escTyped)
     }
 }
 
@@ -244,11 +251,7 @@ function moveFocus(e, focusables) {
     let first = focusables[0];
     let last = focusables[focusables.length - 1];
     let shift = e.shiftKey;
-    if (shift) {
-        focusBackward(e, first, last)
-    } else {
-        focusFoward(e, first, last)
-    }
+    shift ? focusBackward(e, first, last) : focusFoward(e, first, last);
 }
 
 function focusFoward(e, first, last) {
