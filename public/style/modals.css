@@ -115,7 +115,7 @@
     display: none;
 }
 
-@keyframes modalDown {
+@keyframes modalTopDown {
     0% {
         top: -40rem;
     }
@@ -125,9 +125,77 @@
     }
 }
 
-@keyframes modalUp {
+@keyframes modalTopFadeIn {
     0% {
         top: 0;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes modalTopFadeOut {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes modalMiddleDown {
+    0% {
+        top: -40rem;
+    }
+
+    100% {
+        top: 10rem;
+    }
+}
+
+@keyframes modalMiddleFadeIn {
+    0% {
+        top: 10rem;
+        opacity: 0;
+    }
+
+    100% {
+        top: 10rem;
+        opacity: 1;
+    }
+}
+
+@keyframes modalMiddleFadeOut {
+    0% {
+        top: 10rem;
+        opacity: 1;
+    }
+
+    100% {
+        top: 10rem;
+        opacity: 0;
+    }
+}
+
+@keyframes modalTopUp {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: -40rem;
+    }
+}
+
+@keyframes modalMiddleUp {
+    0% {
+        top: 10rem;
     }
 
     100% {
@@ -155,20 +223,72 @@
     }
 }
 
-.modal.modal-down {
-    animation-name: modalDown;
+.modal[data-position="top"].modal-animation-in[data-animation-in="down"] {
+    animation-name: modalTopDown;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
     display: block;
 }
 
-.modal.show {
+.modal[data-position="top"].modal-animation-in[data-animation-in="fade"] {
+    animation-name: modalTopFadeIn;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    display: block;
+}
+
+.modal[data-position="middle"].modal-animation-in[data-animation-in="down"] {
+    animation-name: modalMiddleDown;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    display: block;
+}
+
+.modal[data-position="middle"].modal-animation-in[data-animation-in="fade"] {
+    animation-name: modalMiddleFadeIn;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    display: block;
+}
+
+.modal[data-position="top"].show {
     top: 0;
 }
 
-.modal.modal-up {
-    animation-name: modalUp;
+.modal[data-position="middle"].show {
+    top: 10rem;
+}
+
+.modal[data-position="top"].modal-animation-out[data-animation-out="up"] {
+    animation-name: modalTopUp;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    display: block;
+}
+
+.modal[data-position="top"].modal-animation-out[data-animation-out="fade"] {
+    animation-name: modalTopFadeOut;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    display: block;
+}
+
+.modal[data-position="middle"].modal-animation-out[data-animation-out="up"] {
+    animation-name: modalMiddleUp;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+    display: block;
+}
+
+.modal[data-position="middle"].modal-animation-out[data-animation-out="fade"] {
+    animation-name: modalMiddleFadeOut;
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;

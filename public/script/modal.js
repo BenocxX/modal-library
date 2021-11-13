@@ -2,17 +2,20 @@ const shadow = document.querySelector(".modal-shadow");
 
 export function showAlertModal(detail, callback) {
     if (detail === undefined) {
-        detail = { title: "",  text: ""}
+        detail = { title: "",  text: "", position: ""}
     }
-    if (detail.title === "") {
+    if (detail.title === "" || detail.title === undefined) {
         detail.title = "Alert!";
     }
-    if (detail.text === "") {
+    if (detail.text === "" || detail.text === undefined) {
         detail.text = "You are leaving the website!";
+    }
+    if (detail.position === "" || detail.position === undefined) {
+        detail.position = "top";
     }
 
     const html = `
-        <div tabindex="-1" class="modal" id="alertModal">
+        <div tabindex="-1" class="modal" data-position="${detail.position}" id="alertModal">
             <div class="modal-dialog">
                 <div class="modal-header-container">
                     <h3 class="modal-title">${detail.title}</h3>
@@ -42,23 +45,26 @@ export function showAlertModal(detail, callback) {
 
 export function showConfirmModal(detail, callback) {
     if (detail === undefined) {
-        detail = { title: "",  text: "", confirmButton: "", denyButton: "" }
+        detail = { title: "",  text: "", confirmButton: "", denyButton: "", position: "" }
     }
-    if (detail.title === "") {
+    if (detail.title === "" || detail.title === undefined) {
         detail.title = "Confirm Modal";
     }
-    if (detail.text === "") {
+    if (detail.text === "" || detail.text === undefined) {
         detail.text = "Are you sure you want to do this?";
     }
-    if (detail.confirmButton === "") {
+    if (detail.confirmButton === "" || detail.confirmButton === undefined) {
         detail.confirmButton = "Yes!";
     }
-    if (detail.denyButton === "") {
+    if (detail.denyButton === "" || detail.denyButton === undefined) {
         detail.denyButton = "No!";
+    }
+    if (detail.position === "" || detail.position === undefined) {
+        detail.position = "top";
     }
 
     const html = `
-        <div tabindex="-1" class="modal" id="confirmModal">
+        <div tabindex="-1" class="modal" data-position="${detail.position}" id="confirmModal">
             <div class="modal-dialog">
                 <div class="modal-header-container">
                     <h3 class="modal-title">${detail.title}</h3>
@@ -111,8 +117,8 @@ export function onModalClose(e) {
     const modals = document.querySelectorAll(".modal");
     for (const modal of modals) {
         if (modal.classList.contains("show") ||
-            modal.classList.contains("modal-down") ||
-            modal.classList.contains("modal-up")) {
+            modal.classList.contains("modal-animation-in") ||
+            modal.classList.contains("modal-animation-out")) {
             currentModal = modal;
         }
     }
@@ -142,11 +148,11 @@ function initEventListenerInModal(modal) {
 }
 
 function showModal(modal) {
-    modal.classList.add("modal-down");
+    modal.classList.add("modal-animation-in");
     modal.addEventListener('animationend', () => {
-        if (modal.classList.contains("modal-down")) {
+        if (modal.classList.contains("modal-animation-in")) {
             modal.classList.add("show");
-            modal.classList.remove("modal-down");
+            modal.classList.remove("modal-animation-in");
         }
     });
 
@@ -164,10 +170,10 @@ function showModal(modal) {
 
 function closeModal(modal) {
     modal.classList.remove("show");
-    modal.classList.add("modal-up");
+    modal.classList.add("modal-animation-out");
     modal.addEventListener('animationend', () => {
-        if (modal.classList.contains("modal-up")) {
-            modal.classList.remove("modal-up");
+        if (modal.classList.contains("modal-animation-out")) {
+            modal.classList.remove("modal-animation-out");
             modal.classList.remove("show");
         }
     });
@@ -190,8 +196,8 @@ function escTyped(e) {
         let currentModal;
         for (const modal of modals) {
             if (modal.classList.contains("show") ||
-                modal.classList.contains("modal-down") ||
-                modal.classList.contains("modal-up")) {
+                modal.classList.contains("modal-animation-in") ||
+                modal.classList.contains("modal-animation-out")) {
                 currentModal = modal;
             }
         }
@@ -207,8 +213,8 @@ function handleKey(e) {
         let currentModal;
         for (const modal of modals) {
             if (modal.classList.contains("show") ||
-                modal.classList.contains("modal-down") ||
-                modal.classList.contains("modal-up")) {
+                modal.classList.contains("modal-animation-in") ||
+                modal.classList.contains("modal-animation-out")) {
                 currentModal = modal;
             }
         }
