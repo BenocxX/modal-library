@@ -1,32 +1,27 @@
 const shadow = document.querySelector(".modal-shadow");
 
 export function showAlertModal(detail, callback) {
-    if (detail === undefined) {
-        detail = {
-            title: "",
-            text: "",
-            position: "",
-            animationIn: "",
-            animationOut: ""
-        }
-    }
-    if (detail.title === "" || detail.title === undefined) {
-        detail.title = "Alert!";
-    }
-    if (detail.text === "" || detail.text === undefined) {
-        detail.text = "You are leaving the website!";
-    }
-    if (detail.position === "" || detail.position === undefined) {
-        detail.position = "top";
-    }
-    if (detail.animationIn === "" || detail.animationIn === undefined) {
-        detail.animationIn = "down";
-    }
-    if (detail.animationOut === "" || detail.animationOut === undefined) {
-        detail.animationOut = "up";
-    }
+    detail = initializeDetail(detail);
 
-    const html = `
+    const html = getAlertModalHtml(detail);
+    const alertModalContainer = document.querySelector(".alert-modal-container")
+    alertModalContainer.innerHTML = html
+
+    const modal = alertModalContainer.querySelector(".modal");
+    initEventListenerInModal(modal);
+    showModal(modal);
+    setAlertModalCallback(callback, modal);
+}
+
+function setAlertModalCallback(callback, modal) {
+    if (callback !== undefined) {
+        const callbackButton = modal.querySelector("#callbackButton");
+        callbackButton.addEventListener("click", callback);
+    }
+}
+
+function getAlertModalHtml(detail) {
+    return `
         <div tabindex="-1" class="modal" data-animation-in="${detail.animationIn}" data-animation-out="${detail.animationOut}" data-position="${detail.position}" id="alertModal">
             <div class="modal-dialog">
                 <div class="modal-header-container">
@@ -41,31 +36,23 @@ export function showAlertModal(detail, callback) {
                 </div>
             </div>
         </div>
-    `
-    const alertModalContainer = document.querySelector(".alert-modal-container")
-    alertModalContainer.innerHTML = html
-
-    const modal = alertModalContainer.querySelector(".modal");
-    initEventListenerInModal(modal);
-    showModal(modal);
-
-    if (callback !== undefined) {
-        const callbackButton = modal.querySelector("#callbackButton");
-        callbackButton.addEventListener("click", callback);
-    }
+    `;
 }
 
 export function showConfirmModal(detail, callback) {
-    detail = initializeConfirmDetail(detail);
+    detail = initializeDetail(detail);
 
-    const html = getConfirmModalHtml();
+    const html = getConfirmModalHtml(detail);
     const confirmModalContainer = document.querySelector(".confirm-modal-container")
     confirmModalContainer.innerHTML = html
 
     const modal = confirmModalContainer.querySelector(".modal");
     initEventListenerInModal(modal);
     showModal(modal);
+    setConfirmModalCallbacks(callback, modal);
+}
 
+function setConfirmModalCallbacks(callback, modal) {
     if (callback !== undefined) {
         const callbackConfirmButton = modal.querySelector("#callbackConfirm");
         callbackConfirmButton.addEventListener("click", () => {
@@ -79,7 +66,7 @@ export function showConfirmModal(detail, callback) {
     }
 }
 
-function getConfirmModalHtml() {
+function getConfirmModalHtml(detail) {
     return `
         <div tabindex="-1" class="modal"  data-animation-in="${detail.animationIn}" data-animation-out="${detail.animationOut}" data-position="${detail.position}" id="confirmModal">
             <div class="modal-dialog">
@@ -99,7 +86,7 @@ function getConfirmModalHtml() {
     `;
 }
 
-function initializeConfirmDetail(detail) {
+function initializeDetail(detail) {
     detail = getEmptyDetailIfUndefined(detail);
     detail.title = valueIfKeyEmpty(detail.title, "Confirm Modal");
     detail.text = valueIfKeyEmpty(detail.text, "Are you sure you want to do this?");
