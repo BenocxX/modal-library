@@ -56,38 +56,7 @@ export function showAlertModal(detail, callback) {
 }
 
 export function showConfirmModal(detail, callback) {
-    if (detail === undefined) {
-        detail = {
-            title: "",
-            text: "",
-            confirmButton: "",
-            denyButton: "",
-            position: "",
-            animationIn: "",
-            animationOut: ""
-        }
-    }
-    if (detail.title === "" || detail.title === undefined) {
-        detail.title = "Confirm Modal";
-    }
-    if (detail.text === "" || detail.text === undefined) {
-        detail.text = "Are you sure you want to do this?";
-    }
-    if (detail.position === "" || detail.position === undefined) {
-        detail.position = "top";
-    }
-    if (detail.confirmButton === "" || detail.confirmButton === undefined) {
-        detail.confirmButton = "Yes!";
-    }
-    if (detail.denyButton === "" || detail.denyButton === undefined) {
-        detail.denyButton = "No!";
-    }
-    if (detail.animationIn === "" || detail.animationIn === undefined) {
-        detail.animationIn = "down";
-    }
-    if (detail.animationOut === "" || detail.animationOut === undefined) {
-        detail.animationOut = "up";
-    }
+    detail = initializeConfirmDetail(detail);
 
     const html = `
         <div tabindex="-1" class="modal"  data-animation-in="${detail.animationIn}" data-animation-out="${detail.animationOut}" data-position="${detail.position}" id="confirmModal">
@@ -124,6 +93,40 @@ export function showConfirmModal(detail, callback) {
             callback(false)
         });
     }
+}
+
+function initializeConfirmDetail(detail) {
+    detail = getEmptyDetailIfUndefined(detail);
+    detail.title = valueIfKeyEmpty(detail.title, "Confirm Modal");
+    detail.text = valueIfKeyEmpty(detail.text, "Are you sure you want to do this?");
+    detail.position = valueIfKeyEmpty(detail.position, "top");
+    detail.confirmButton = valueIfKeyEmpty(detail.confirmButton, "Yes!");
+    detail.denyButton = valueIfKeyEmpty(detail.denyButton, "No!");
+    detail.animationIn = valueIfKeyEmpty(detail.animationIn, "down");
+    detail.animationOut = valueIfKeyEmpty(detail.animationOut, "up");
+    return detail;
+}
+
+function getEmptyDetailIfUndefined(detail) {
+    if (detail === undefined) {
+        return {
+            title: "",
+            text: "",
+            confirmButton: "",
+            denyButton: "",
+            position: "",
+            animationIn: "",
+            animationOut: ""
+        }
+    }
+    return detail;
+}
+
+function valueIfKeyEmpty(value, defaultValue) {
+    if (value === "" || value === undefined) {
+        return defaultValue;
+    }
+    return value;
 }
 
 export function showAjaxModal(url) {

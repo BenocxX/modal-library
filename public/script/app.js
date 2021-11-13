@@ -40,7 +40,8 @@ confirmModalButton2.addEventListener("click", (e) => {
         title: "Custom Alert Title",
         text: "My custom alert description",
         confirmButton: "Custom confirm button",
-        denyButton: "Custom deny button"
+        denyButton: "Custom deny button",
+        animationIn: "fade"
     }, (answer) => {
         if (answer) {
             alert("User confirmed");
