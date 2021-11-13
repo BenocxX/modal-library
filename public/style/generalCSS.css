@@ -15,6 +15,8 @@
     --red: rgb(201, 48, 48);
     --light-green: rgb(50, 196, 52);
     --green: rgb(43, 178, 45);
+    --light-yellow: rgb(227, 222, 63);
+    --yellow: rgb(201, 196, 33);
 }
 
 .bg-light-blue {
@@ -39,4 +41,12 @@
 
 .bg-green:hover {
     background-color: var(--green);
+}
+
+.bg-yellow {
+    background-color: var(--light-yellow);
+}
+
+.bg-yellow:hover {
+    background-color: var(--yellow);
 }
