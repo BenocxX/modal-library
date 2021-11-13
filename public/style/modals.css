@@ -223,36 +223,27 @@
     }
 }
 
-.modal[data-position="top"].modal-animation-in[data-animation-in="down"] {
-    animation-name: modalTopDown;
+.modal.modal-animation-in {
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
     display: block;
+}
+
+.modal[data-position="top"].modal-animation-in[data-animation-in="down"] {
+    animation-name: modalTopDown;
 }
 
 .modal[data-position="top"].modal-animation-in[data-animation-in="fade"] {
     animation-name: modalTopFadeIn;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    display: block;
 }
 
 .modal[data-position="middle"].modal-animation-in[data-animation-in="down"] {
     animation-name: modalMiddleDown;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    display: block;
 }
 
 .modal[data-position="middle"].modal-animation-in[data-animation-in="fade"] {
     animation-name: modalMiddleFadeIn;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    display: block;
 }
 
 .modal[data-position="top"].show {
@@ -263,36 +254,27 @@
     top: 10rem;
 }
 
-.modal[data-position="top"].modal-animation-out[data-animation-out="up"] {
-    animation-name: modalTopUp;
+.modal.modal-animation-out {
     animation-duration: 0.6s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;
     display: block;
+}
+
+.modal[data-position="top"].modal-animation-out[data-animation-out="up"] {
+    animation-name: modalTopUp;
 }
 
 .modal[data-position="top"].modal-animation-out[data-animation-out="fade"] {
     animation-name: modalTopFadeOut;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    display: block;
 }
 
 .modal[data-position="middle"].modal-animation-out[data-animation-out="up"] {
     animation-name: modalMiddleUp;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    display: block;
 }
 
 .modal[data-position="middle"].modal-animation-out[data-animation-out="fade"] {
     animation-name: modalMiddleFadeOut;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    display: block;
 }
 
 .modal-shadow.fade-in {
