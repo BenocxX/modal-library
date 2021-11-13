@@ -128,17 +128,21 @@ export function showConfirmModal(detail, callback) {
 
 export function showAjaxModal(url) {
     fetch(url)
-        .then(function (response) {
+        .then((response) => {
             return response.text();
         })
-        .then(function (htmlModal) {
-            const ajaxModalContainer = document.querySelector(".ajax-modal-container");
-            ajaxModalContainer.innerHTML = htmlModal;
-
-            const modal = ajaxModalContainer.querySelector(".modal");
-            initEventListenerInModal(modal);
-            showModal(modal);
+        .then((html) => {
+            showHtmlModal(html)
         });
+}
+
+function showHtmlModal(html) {
+    const ajaxModalContainer = document.querySelector(".ajax-modal-container");
+    ajaxModalContainer.innerHTML = html;
+
+    const modal = ajaxModalContainer.querySelector(".modal");
+    initEventListenerInModal(modal);
+    showModal(modal);
 }
 
 export function onModalLaunch(e, detail) {
