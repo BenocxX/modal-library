@@ -12,7 +12,7 @@ export function showAlertModal(detail) {
     }
 
     const html = `
-        <div class="modal" id="alertModal">
+        <div tabindex="-1" class="modal" id="alertModal">
             <div class="modal-dialog">
                 <div class="modal-header-container">
                     <h3 class="modal-title">${detail.title}</h3>
@@ -53,7 +53,7 @@ export function showConfirmModal(detail) {
     }
 
     const html = `
-        <div class="modal" id="confirmModal">
+        <div tabindex="-1" class="modal" id="confirmModal">
             <div class="modal-dialog">
                 <div class="modal-header-container">
                     <h3 class="modal-title">${detail.title}</h3>
@@ -122,6 +122,7 @@ function showModal(modal) {
         }
     });
 
+    modal.focus();
     window.addEventListener('keydown', handleKey);
 }
 
