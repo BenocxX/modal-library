@@ -2,7 +2,13 @@ const shadow = document.querySelector(".modal-shadow");
 
 export function showAlertModal(detail, callback) {
     if (detail === undefined) {
-        detail = { title: "",  text: "", position: ""}
+        detail = {
+            title: "",
+            text: "",
+            position: "",
+            animationIn: "",
+            animationOut: ""
+        }
     }
     if (detail.title === "" || detail.title === undefined) {
         detail.title = "Alert!";
@@ -13,9 +19,15 @@ export function showAlertModal(detail, callback) {
     if (detail.position === "" || detail.position === undefined) {
         detail.position = "top";
     }
+    if (detail.animationIn === "" || detail.animationIn === undefined) {
+        detail.animationIn = "down";
+    }
+    if (detail.animationOut === "" || detail.animationOut === undefined) {
+        detail.animationOut = "up";
+    }
 
     const html = `
-        <div tabindex="-1" class="modal" data-position="${detail.position}" id="alertModal">
+        <div tabindex="-1" class="modal" data-animation-in="${detail.animationIn}" data-animation-out="${detail.animationOut}" data-position="${detail.position}" id="alertModal">
             <div class="modal-dialog">
                 <div class="modal-header-container">
                     <h3 class="modal-title">${detail.title}</h3>
@@ -45,7 +57,15 @@ export function showAlertModal(detail, callback) {
 
 export function showConfirmModal(detail, callback) {
     if (detail === undefined) {
-        detail = { title: "",  text: "", confirmButton: "", denyButton: "", position: "" }
+        detail = {
+            title: "",
+            text: "",
+            confirmButton: "",
+            denyButton: "",
+            position: "",
+            animationIn: "",
+            animationOut: ""
+        }
     }
     if (detail.title === "" || detail.title === undefined) {
         detail.title = "Confirm Modal";
@@ -53,18 +73,24 @@ export function showConfirmModal(detail, callback) {
     if (detail.text === "" || detail.text === undefined) {
         detail.text = "Are you sure you want to do this?";
     }
+    if (detail.position === "" || detail.position === undefined) {
+        detail.position = "top";
+    }
     if (detail.confirmButton === "" || detail.confirmButton === undefined) {
         detail.confirmButton = "Yes!";
     }
     if (detail.denyButton === "" || detail.denyButton === undefined) {
         detail.denyButton = "No!";
     }
-    if (detail.position === "" || detail.position === undefined) {
-        detail.position = "top";
+    if (detail.animationIn === "" || detail.animationIn === undefined) {
+        detail.animationIn = "down";
+    }
+    if (detail.animationOut === "" || detail.animationOut === undefined) {
+        detail.animationOut = "up";
     }
 
     const html = `
-        <div tabindex="-1" class="modal" data-position="${detail.position}" id="confirmModal">
+        <div tabindex="-1" class="modal"  data-animation-in="${detail.animationIn}" data-animation-out="${detail.animationOut}" data-position="${detail.position}" id="confirmModal">
             <div class="modal-dialog">
                 <div class="modal-header-container">
                     <h3 class="modal-title">${detail.title}</h3>
@@ -75,7 +101,7 @@ export function showConfirmModal(detail, callback) {
                 </div>
                 <div class="modal-footer-container">
                     <button data-close-button id="callbackConfirm" class="modal-button bg-light-blue">${detail.confirmButton}</button>
-                    <button data-close-button id="callbackDeny" class="modal-button bg-light-blue">${detail.denyButton}</button>
+                    <button data-close-button id="callbackDeny" class="modal-button bg-red">${detail.denyButton}</button>
                 </div>
             </div>
         </div>

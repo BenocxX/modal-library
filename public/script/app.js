@@ -21,7 +21,7 @@ const alertModalButton2 = document.querySelector(".alert-button2")
 alertModalButton2.addEventListener("click", (e) => {
     md.showAlertModal({
         title: "Custom Alert Title",
-        text: "My custom alert description",
+        text: "My custom alert description"
     }, () => {
         alert("This is a callback!");
     });
@@ -40,7 +40,7 @@ confirmModalButton2.addEventListener("click", (e) => {
         title: "Custom Alert Title",
         text: "My custom alert description",
         confirmButton: "Custom confirm button",
-        denyButton: "Custom deny button",
+        denyButton: "Custom deny button"
     }, (answer) => {
         if (answer) {
             alert("User confirmed");
